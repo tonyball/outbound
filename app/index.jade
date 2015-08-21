@@ -1,20 +1,9 @@
 doctype html
-<!--[if lt IE 7]>
-<html class="no-js lt-ie9 lt-ie8 lt-ie7">
-<![endif]-->
-<!--[if IE 7]>
-<html class="no-js lt-ie9 lt-ie8">
-<![endif]-->
-<!--[if IE 8]>
-<html class="no-js lt-ie9">
-<![endif]-->
-<!--[if gt IE 8]><!-->
-html.no-js
-<!--<![endif]-->
+html
 head
   meta(charset="utf-8")
   meta(http-equiv="X-UA-Compatible", content="IE=edge")
-  title
+  title outbound | the more you know the further you go
   meta(name="description", content="")
   meta(name="viewport", content="width=device-width")
   // Place favicon.ico and apple-touch-icon.png in the root directory
@@ -25,35 +14,24 @@ head
   // build:css(.tmp) styles/main.css
   link(rel="stylesheet", href="styles/main.css")
   // endbuild
+  link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css")
+  link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+
 body(ng-app="outboundApp")
-  <!--[if lt IE 7]>
-  p.browsehappy
-    | You are using an
-    strong outdated
-    |  browser. Please
-    a(href="http://browsehappy.com/") upgrade your browser
-    |  to improve your experience.
-  <![endif]-->
 
-  // Add your site or application content here
-
+  navigation-bar
+  sidebar
   div(ng-view)
 
-
-  // Google Analytics: change UA-XXXXX-X to be your site's ID
-  script.
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-XXXXX-X');
-    ga('send', 'pageview');
 
   <!--[if lt IE 9]>
   script(src="bower_components/es5-shim/es5-shim.js")
   script(src="bower_components/json3/lib/json3.min.js")
   <![endif]-->
+  script(src="bower_components/jquery/dist/jquery.min.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js")
+  
+
 
   // build:js scripts/vendor.js
   // bower:js
@@ -66,8 +44,13 @@ body(ng-app="outboundApp")
   script(src='bower_components/angular-route/angular-route.js')
   // endbower
   // endbuild
+  script(src='bower_components/angular-materialize/js/app.js')
+  script(src='bower_components/angular-materialize/src/angular-materialize.js')
 
   // build:js(.tmp) scripts/main.js
   script(src="scripts/app.js")
   script(src="scripts/controllers/main.js")
+  script(src="scripts/controllers/login.js")
+  script(src="scripts/directives/dropdown-content.js")
+  script(src="scripts/directives/navigation-bar.js")
   // endbuild
