@@ -5,9 +5,8 @@ angular
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute',
-    'ui.materialize'
-  ])
+    'ngRoute'
+])
   .config ($routeProvider, $locationProvider) ->
     $routeProvider
       .when '/',
