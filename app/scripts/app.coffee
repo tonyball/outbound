@@ -8,7 +8,7 @@ angular
     'ngRoute',
     'ui.materialize'
   ])
-  .config ($routeProvider) ->
+  .config ($routeProvider, $locationProvider) ->
     $routeProvider
       .when '/',
         templateUrl: 'views/main.html'
@@ -18,4 +18,3 @@ angular
         controller: 'LoginCtrl'
       .otherwise
         redirectTo: '/'
-
