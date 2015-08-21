@@ -19,9 +19,68 @@ head
 
 body(ng-app="outboundApp")
 
-  navigation-bar
-  sidebar
-  div(ng-view)
+  //- Dropdown items
+  ul.dropdown-content#user-dropdown
+    li
+      a(href="#/profile").black-text Profile
+    li.divider
+    li
+      a(href="#").black-text Manage Classroom
+    li
+      a(href="#").black-text My Students
+    li.divider
+    li
+      a(href="#").black-text Account Settings
+    li
+      a(href="#").black-text User Guide
+    li.divider
+    li
+      a(href="#").black-text Log out
+
+  ul.notifications.dropdown-content#notifications-dropdown
+    div.notifications-header
+      header.black-text Notifications
+    li.divider
+    li
+      a.notify-item.black-text No Notifications
+
+
+  nav.white
+    ul.right  
+      li.notification-icon
+        a(href="", data-activates="notifications-dropdown").black-text.noti-dropdown-button
+          i.small.material-icons notifications 
+      li
+        img(src="images/avatars/boy.png", alt="profile avatar", height="48").left.hide-on-med-and-down.user-avatar
+        a(href="#", data-activates="user-dropdown").black-text.waves-effect.waves-green.dropdown-button MR.OUTBOUND KASETSART
+          i.small.material-icons.right.arrow-dropdown arrow_drop_down
+
+    ul(ng-controller="SidebarCtrl").side-nav#slide-out
+    
+      li(ng-class="{ active: isActive('/')}")
+        a(href="#/").black-text.waves-effect.waves-green 
+          i.small.material-icons.left apps 
+          | Dashboard
+
+      br
+      div.row
+        .hide-on-med-and-up.col.offset-s3
+          img(src="images/logo.png",width="100", alt="outbound logo")
+      
+
+    a(href="#", data-activates="slide-out").button-collapse.show-on-large
+      i.mdi-navigation-menu.black-text
+    ul
+      li.nav-logo
+        img(src="images/nav-logo.png", height="60").hide-on-small-only
+
+  div.row      
+    div(ng-view)
+  
+  div.container
+  footer.row.footer-copyright.green.accent-1
+      div.text-left.col.m12.grey-text.text-darken-2.center-align
+        p outbound &copy 2015
 
 
   <!--[if lt IE 9]>
@@ -44,8 +103,8 @@ body(ng-app="outboundApp")
   script(src='bower_components/angular-route/angular-route.js')
   // endbower
   // endbuild
-  script(src='bower_components/angular-materialize/js/app.js')
-  script(src='bower_components/angular-materialize/src/angular-materialize.js')
+  //- script(src='bower_components/angular-materialize/js/app.js')
+  //- script(src='bower_components/angular-materialize/src/angular-materialize.js')
 
   // build:js(.tmp) scripts/main.js
   script(src="scripts/app.js")
@@ -53,4 +112,12 @@ body(ng-app="outboundApp")
   script(src="scripts/controllers/login.js")
   script(src="scripts/directives/dropdown-content.js")
   script(src="scripts/directives/navigation-bar.js")
+  script(src="scripts/controllers/sidebar.js")
   // endbuild
+
+  script.
+    $(document).ready(function(){
+      $(".button-collapse").sideNav({closeOnClick: true, menuWidth: 300});
+      $(".dropdown-button").dropdown({hover: false,belowOrigin: true});
+      $(".noti-dropdown-button").dropdown({hover: true,belowOrigin: true, gutter: -42});
+    })

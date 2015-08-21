@@ -1,0 +1,16 @@
+ul(ng-controller="SidebarCtrl").side-nav.fixed#slide-out
+	li(ng-class="{ active: isActive('/dashboard')")
+		a(href="#/").black-text.waves-effect.waves-green
+			i.small.material-icons.left apps
+
+	.row.hide-on-med-and-up.center-align
+		img(src="images/logo.png",alt="outbound logo", width="100")
+
+a(href="", data-activates="slide-out").button-collapse.show-on-large
+	i.mdi-navigation-menu.black-text
+
+
+script.
+	$(document).ready(function(){
+		$(".button-collapse").sideNav({closeOnClick: true, menuWidth: 300});
+	});
