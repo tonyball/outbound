@@ -6,27 +6,30 @@ html,body
 	
 .arrow-dropdown
 	padding-top 15px
-		
-// @media screen and (max-width: 380px)
-// 	.page-title
-// 		h5
-// 			font-size 20px !important
-// 			line-height 30px !important
-// 			font-weight bold !important
-			
-// @media screen and (max-width: 369px)
-// 	.page-title
-// 		h5
-// 			font-size 14px !important
-// 			line-height 30px !important
-// 			font-weight bold !important
 
-// @media screen and (max-width: 340px)
-// 	.page-title
-// 		h5
-// 			font-size 12px !important
-// 			line-height 30px !important
-// 			font-weight bold !important
+.mdi-navigation-menu
+	margin-left 15px
+		
+@media screen and (max-width: 380px)
+	.page-title
+		h5
+			font-size 20px !important
+			line-height 30px !important
+			font-weight bold !important
+			
+@media screen and (max-width: 369px)
+	.page-title
+		h5
+			font-size 14px !important
+			line-height 30px !important
+			font-weight bold !important
+
+@media screen and (max-width: 340px)
+	.page-title
+		h5
+			font-size 12px !important
+			line-height 30px !important
+			font-weight bold !important
 
 footer 
 	bottom 0
@@ -35,15 +38,24 @@ footer
 	margin-bottom: -20px !important
 	position absolute
 
-.nav-logo:hover
+.nav-logo:hover, .page-title:hover
 	background-color transparent
 
 .nav-logo
+	margin-top 0.5em
 	margin-left 1em
 
 .container 
 	// min-height 100%
 	position relative
+	
+
+ul.side-nav
+	li
+		a
+			.small.material-icons 
+				font-size 2.55rem !important
+				padding-top 0.325em
 
 .material-icons 
 		vertical-align middle
@@ -62,6 +74,9 @@ footer
 ul.notifications 
 	margin-top: -5px
 	border-bottom 1px solid lightgray
+	min-width 400px !important
+	max-width 400px !important
+	overflow auto
 
 ul.notifications
 	div 
