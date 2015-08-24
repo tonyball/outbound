@@ -10,10 +10,13 @@ angular
   .config ($routeProvider, $locationProvider) ->
     $routeProvider
       .when '/',
-        templateUrl: 'views/main.html'
+        templateUrl: 'views/dashboard.html'
         controller: 'MainCtrl'
       .when '/login',
         templateUrl: 'views/login.html'
         controller: 'LoginCtrl'
+      .when '/dashboard',
+        templateUrl: 'views/dashboard.html'
+        controller: 'DashboardCtrl'
       .otherwise
         redirectTo: '/'
