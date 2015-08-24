@@ -9,17 +9,17 @@ head
   // Place favicon.ico and apple-touch-icon.png in the root directory
   // build:css styles/vendor.css
   // bower:css
+  link(rel='stylesheet', href='bower_components/materialize/bin/materialize.css')
   // endbower
   // endbuild
   // build:css(.tmp) styles/main.css
   link(rel="stylesheet", href="styles/main.css")
   // endbuild
-  link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css")
   link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
 
 body(ng-app="outboundApp")
-
-  //- Dropdown items
+  
+  //- dropdown content
   ul.dropdown-content#user-dropdown
     li
       a(href="#/profile").black-text Profile
@@ -37,42 +37,53 @@ body(ng-app="outboundApp")
     li
       a(href="#").black-text Log out
 
+  ul.side-nav#slide-out-user
+    li
+      a(href="#/profile").black-text Profile
+    li.divider
+    li
+      a(href="#").black-text Manage Classroom
+    li
+      a(href="#").black-text My Students
+    li.divider
+    li
+      a(href="#").black-text Account Settings
+    li
+      a(href="#").black-text User Guide
+    li.divider
+    li
+      a(href="#").black-text Log out 
+
   ul.notifications.dropdown-content#notifications-dropdown
     div.notifications-header
       header.black-text Notifications
     li.divider
     li
       a.notify-item.black-text No Notifications
-
+  //- end dropdown content
 
   nav.white
     ul.right  
       li.notification-icon
         a(href="", data-activates="notifications-dropdown").black-text.noti-dropdown-button
           i.small.material-icons notifications 
-      li
+      li.hide-on-small-only
         img(src="images/avatars/boy.png", alt="profile avatar", height="48").left.hide-on-med-and-down.user-avatar
         a(href="#", data-activates="user-dropdown").black-text.waves-effect.waves-green.dropdown-button MR.OUTBOUND KASETSART
           i.small.material-icons.right.arrow-dropdown arrow_drop_down
+      li.hide-on-med-and-up
+        i(data-activates="slide-out-user").waves-effect.waves-green.slide-out-user-button.small.material-icons.black-text more_vert
 
-    ul(ng-controller="SidebarCtrl").side-nav#slide-out
+    ul(ng-controller="SidebarCtrl").side-nav.hide-on-small-only#slide-out
     
       li(ng-class="{ active: isActive('/')}")
         a(href="#/").black-text.waves-effect.waves-green 
-          i.small.material-icons.left apps 
+          i.small.material-icons.left dashboard 
           | Dashboard
 
-      br
-      div.row
-        .hide-on-med-and-up.col.offset-s3
-          img(src="images/logo.png",width="100", alt="outbound logo")
-      
 
-    a(href="#", data-activates="slide-out").button-collapse.show-on-large
-      i.mdi-navigation-menu.black-text
-    ul
-      li.nav-logo
-        img(src="images/nav-logo.png", height="60").hide-on-small-only
+    a(href="#", data-activates="slide-out",style="margin-left: 0.5em").button-collapse.show-on-large
+      i.material-icons.black-text view_module
 
   div.row      
     div(ng-view)
@@ -83,17 +94,11 @@ body(ng-app="outboundApp")
         p outbound &copy 2015
 
 
-  <!--[if lt IE 9]>
-  script(src="bower_components/es5-shim/es5-shim.js")
-  script(src="bower_components/json3/lib/json3.min.js")
-  <![endif]-->
-  script(src="bower_components/jquery/dist/jquery.min.js")
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js")
-  
 
 
   // build:js scripts/vendor.js
   // bower:js
+  script(src='bower_components/jquery/dist/jquery.js')
   script(src='bower_components/es5-shim/es5-shim.js')
   script(src='bower_components/angular/angular.js')
   script(src='bower_components/json3/lib/json3.min.js')
@@ -101,23 +106,24 @@ body(ng-app="outboundApp")
   script(src='bower_components/angular-cookies/angular-cookies.js')
   script(src='bower_components/angular-sanitize/angular-sanitize.js')
   script(src='bower_components/angular-route/angular-route.js')
+  script(src='bower_components/materialize/bin/materialize.js')
+  script(src='bower_components/angular-materialize/src/angular-materialize.js')
   // endbower
   // endbuild
-  //- script(src='bower_components/angular-materialize/js/app.js')
-  //- script(src='bower_components/angular-materialize/src/angular-materialize.js')
 
   // build:js(.tmp) scripts/main.js
   script(src="scripts/app.js")
   script(src="scripts/controllers/main.js")
   script(src="scripts/controllers/login.js")
-  script(src="scripts/directives/dropdown-content.js")
-  script(src="scripts/directives/navigation-bar.js")
   script(src="scripts/controllers/sidebar.js")
   // endbuild
 
+  
   script.
     $(document).ready(function(){
       $(".button-collapse").sideNav({closeOnClick: true, menuWidth: 300});
+      $(".slide-out-user-button").sideNav({closeOnClick: true, menuWidth: 300, edge: 'right'});
       $(".dropdown-button").dropdown({hover: false,belowOrigin: true});
-      $(".noti-dropdown-button").dropdown({hover: true,belowOrigin: true, gutter: -42});
+      $(".mini-dropdown-button").dropdown({hover: false,belowOrigin: true,constrain_width: false});
+      $(".noti-dropdown-button").dropdown({hover: true,belowOrigin: true});
     })
