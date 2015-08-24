@@ -10,6 +10,7 @@ head
   // build:css styles/vendor.css
   // bower:css
   link(rel='stylesheet', href='bower_components/materialize/bin/materialize.css')
+  link(rel='stylesheet', href='bower_components/animate.css/animate.css')
   // endbower
   // endbuild
   // build:css(.tmp) styles/main.css
@@ -62,6 +63,24 @@ body(ng-app="outboundApp")
       a.notify-item.black-text No Notifications
   //- end dropdown content
 
+  //- bottom sheet menus
+  #mobile-menu.modal.bottom-sheet
+    .modal-content
+      i.material-icons.right.red-text.modal-action.modal-close close
+      .grid-container
+        div(ng-controller="SidebarCtrl")
+          .grid-menu-item(ng-class="{ active: isActive('/')}")
+            a(href="").dashboard.black-text.madal-action.modal-close
+              span Dashboard
+          .grid-menu-item(ng-class="{ active: isActive('/profile')}")
+            a(href="").profile.black-text.madal-action.modal-close
+              span Profile
+          .grid-menu-item(ng-class="{ active: isActive('/medal')}")
+            a(href="").medal.black-text.madal-action.modal-close
+              span Medal
+
+  //- end bottom sheet menus
+
   nav.white
     ul.right  
       li.notification-icon
@@ -74,16 +93,23 @@ body(ng-app="outboundApp")
       li.hide-on-med-and-up
         i(data-activates="slide-out-user").waves-effect.waves-green.slide-out-user-button.small.material-icons.black-text more_vert
 
-    ul(ng-controller="SidebarCtrl").side-nav.hide-on-small-only#slide-out
-    
-      li(ng-class="{ active: isActive('/')}")
-        a(href="#/").black-text.waves-effect.waves-green 
-          i.small.material-icons.left dashboard 
-          | Dashboard
+    div(ng-controller="SidebarCtrl").side-nav#slide-out
+      .grid-menu-item(ng-class="{ active: isActive('/')}")
+        a(href="").dashboard
+          span Dashboard
+      .grid-menu-item(ng-class="{ active: isActive('/profile')}")
+        a(href="").profile
+          span Profile
+      .grid-menu-item(ng-class="{ active: isActive('/medal')}")
+        a(href="").medal
+          span Medal
 
 
-    a(href="#", data-activates="slide-out",style="margin-left: 0.5em").button-collapse.show-on-large
-      i.material-icons.black-text view_module
+    a(href="", data-activates="slide-out",style="margin-left: 0.5em").button-collapse.show-on-large.hide-on-small-only
+      i.material-icons.black-text apps
+
+    a(href="" data-target="mobile-menu",style="margin-left: 0.5em").modal-trigger.hide-on-med-and-up
+      i.small.material-icons.black-text apps
 
   div.row      
     div(ng-view)
@@ -121,7 +147,8 @@ body(ng-app="outboundApp")
   
   script.
     $(document).ready(function(){
-      $(".button-collapse").sideNav({closeOnClick: true, menuWidth: 300});
+      $('.modal-trigger').leanModal();
+      $(".button-collapse").sideNav({closeOnClick: true, menuWidth: 330});
       $(".slide-out-user-button").sideNav({closeOnClick: true, menuWidth: 300, edge: 'right'});
       $(".dropdown-button").dropdown({hover: false,belowOrigin: true});
       $(".mini-dropdown-button").dropdown({hover: false,belowOrigin: true,constrain_width: false});
