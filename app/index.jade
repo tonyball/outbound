@@ -10,6 +10,7 @@ head
   // build:css styles/vendor.css
   // bower:css
   link(rel='stylesheet', href='bower_components/materialize/bin/materialize.css')
+  link(rel='stylesheet', href='bower_components/animate.css/animate.css')
   // endbower
   // endbuild
   // build:css(.tmp) styles/main.css
@@ -62,6 +63,33 @@ body(ng-app="outboundApp")
       a.notify-item.black-text No Notifications
   //- end dropdown content
 
+  //- bottom sheet menus
+  #mobile-menu.modal.bottom-sheet
+    .modal-content
+      i.material-icons.right.red-text.modal-action.modal-close close
+      .row.center-align
+        .col.s3
+          a(href="").black-text.modal-action.modal-close.grid-menu-item
+            i.medium.material-icons dashboard
+            br
+            | Dashboard
+          a(href="").black-text.modal-action.modal-close.grid-menu-item
+            i.medium.material-icons dashboard
+            br
+            | Dashboard
+        .col.s3
+          a(href="").black-text.modal-action.modal-close.grid-menu-item
+            i.medium.material-icons person
+            br
+            | Profile
+        .col.s3
+          a(href="").black-text.modal-action.modal-close.grid-menu-item
+            i.medium.material-icons dashboard
+            br
+            | Dashboard
+
+  //- end bottom sheet menus
+
   nav.white
     ul.right  
       li.notification-icon
@@ -74,16 +102,19 @@ body(ng-app="outboundApp")
       li.hide-on-med-and-up
         i(data-activates="slide-out-user").waves-effect.waves-green.slide-out-user-button.small.material-icons.black-text more_vert
 
-    ul(ng-controller="SidebarCtrl").side-nav.hide-on-small-only#slide-out
-    
-      li(ng-class="{ active: isActive('/')}")
-        a(href="#/").black-text.waves-effect.waves-green 
-          i.small.material-icons.left dashboard 
-          | Dashboard
+    ul(ng-controller="SidebarCtrl").side-nav#slide-out   
+      .row.col.s12.center-align
+        .col.s3
+          a(href="",ng-class="{ active: isActive('/')}").black-text.grid-menu-item
+            img(src="images/avatars/boy.png",width="48")
 
 
-    a(href="#", data-activates="slide-out",style="margin-left: 0.5em").button-collapse.show-on-large
+
+    a(href="", data-activates="slide-out",style="margin-left: 0.5em").button-collapse.show-on-large.hide-on-small-only
       i.material-icons.black-text view_module
+
+    a(href="" data-target="mobile-menu",style="margin-left: 0.5em").modal-trigger.hide-on-med-and-up
+      i.small.material-icons.black-text view_module
 
   div.row      
     div(ng-view)
@@ -121,6 +152,7 @@ body(ng-app="outboundApp")
   
   script.
     $(document).ready(function(){
+      $('.modal-trigger').leanModal();
       $(".button-collapse").sideNav({closeOnClick: true, menuWidth: 300});
       $(".slide-out-user-button").sideNav({closeOnClick: true, menuWidth: 300, edge: 'right'});
       $(".dropdown-button").dropdown({hover: false,belowOrigin: true});

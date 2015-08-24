@@ -14,12 +14,6 @@ nav
 	background url(../images/nav-logo.png) center center no-repeat
 	background-size 200px
 	
-
-@media screen and (min-width: 601px)
-	#slide-out
-		top 65px
-		
-
 footer 
 	bottom 0
 	left 0
@@ -33,12 +27,8 @@ footer
 	position relative
 	
 
-ul.side-nav
-	li
-		a
-			.small.material-icons 
-				font-size 2.55rem !important
-				padding-top 0.325em
+.side-nav
+	padding 1em
 
 .material-icons 
 		vertical-align middle
@@ -91,16 +81,11 @@ div.notifications-header
 .mdi-navigation-menu:hover
 	color orange
 
-ul.side-nav
-	li:hover
-		color green
-	li.active
-		border-bottom 5px solid darkgreen
-		background-color #f0f0f0
-		font-weight bolder
-nav
-	img.circle 
-		padding-top 5px
+
+a.grid-menu-item.active
+	font-weight bolder !important
+	color #33cc66 !important
+	
 	
 .input-field 
 	input[type=text]:focus, input[type=password]:focus
