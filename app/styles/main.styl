@@ -23,12 +23,19 @@ footer
 
 
 .container 
-	min-height 100%
+	min-height 80%
 	position relative
 	
 
 .side-nav
-	padding 1em
+	padding-top 10px
+	padding-left 5px
+	padding-right 5px
+	display block
+	
+	a
+		padding 0 !important
+
 
 .material-icons 
 		vertical-align middle
@@ -76,15 +83,63 @@ ul.notifications
 div.notifications-header
 	background-color #f1f1f1 !important
 	color black !important
-
+	
 
 .mdi-navigation-menu:hover
 	color orange
 
+.grid-container
+	padding-top 15px
+	padding-left 5px
+	padding-right 5px
+	display block
+	.grid-menu-item
+		width 96px
+		height 110px 
+		display inline-block
+		vertical-align top
+		padding-top 52px
+		text-align center
+		.dashboard
+			background url(../images/icons/ic_bulletin_board.png) center top no-repeat
+			padding-top 3.25em  !important
+			
+		.profile
+			background url(../images/icons/ic_agent.png) center top no-repeat
+			padding-top 3.25em  !important
+		.medal
+			background url(../images/icons/ic_certificate1.png) center top no-repeat
+			padding-top 3.25em  !important
 
-a.grid-menu-item.active
-	font-weight bolder !important
-	color #33cc66 !important
+	
+
+.grid-menu-item
+	width 96px
+	height 110px 
+	display inline-block
+	vertical-align top
+	padding-top 12px
+	text-align center
+		
+	.dashboard
+		background url(../images/icons/ic_bulletin_board.png) center top no-repeat
+		padding-top 1.95em  !important
+		
+	.profile
+		background url(../images/icons/ic_agent.png) center top no-repeat
+		padding-top 1.95em  !important
+	.medal
+		background url(../images/icons/ic_certificate1.png) center top no-repeat
+		padding-top 1.95em  !important
+	
+	
+
+.grid-menu-item:hover
+	border 1px solid lightgray !important
+	border-radius 2px !important
+	
+.grid-menu-item.active
+	font-weight bolder  !important
 	
 	
 .input-field 
