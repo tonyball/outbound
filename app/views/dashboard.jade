@@ -1,1 +1,47 @@
-p This is the dashboard view.
+h3.grey-text.text-accent-2.center DASHBOARD
+h5.center You are...
+//- filter button
+.center-align
+	a.waves-effect.waves-light.btn.green.learn-btn Learning
+	&nbsp
+	a.waves-effect.waves-light.btn-flat.teach-btn Teaching
+//- end fitler button
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//- actions button
+.fixed-action-btn(style="bottom: 45px; right: 45px")
+	a.btn-floating.btn-large.green.darken-1
+		i.large.material-icons add 
+	ul
+		li
+			a.btn-floating.blue.tooltipped(data-position="left" data-delay="50" data-tooltip="Create an Exam")
+				i.material-icons note_add
+		li
+			a.btn-floating.yellow.darken-2.tooltipped(data-position="left" data-delay="50" data-tooltip="Find a Classroom")
+				i.material-icons school
+		li
+			a.btn-floating.red.darken-2.tooltipped(data-position="left" data-delay="50" data-tooltip="Create a Classroom")
+				i.material-icons create
+//- end actions button
+
+script.
+	$(document).ready(function(){
+		$('.tooltipped').tooltip({delay: 50});
+		$('.learn-btn,.teach-btn').on('click', function(){
+			$('.teach-btn').toggleClass('btn green btn-flat');
+			$('.learn-btn').toggleClass('btn green btn-flat');
+		})
+	});

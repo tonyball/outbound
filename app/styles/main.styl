@@ -2,7 +2,7 @@ html,body
 	margin 0
 	padding 0
 	height 100%
-	background-color #f1f1f1
+	background-color #f9f9f9
 	
 .arrow-dropdown
 	padding-top 15px
@@ -23,7 +23,7 @@ footer
 
 
 .container 
-	min-height 71%
+	min-height 100%
 	position relative
 	
 
@@ -43,16 +43,19 @@ footer
 .material-icons
 	padding-bottom -0.45em
 
-.notification-icon
-	.material-icons:hover
+.notification-icon:hover
+	.material-icons
 		color green
-		transform: rotate(20deg);
+		transform rotate(20deg)
+
+.btn-floating.btn-large:hover
+	i
+		transform rotate(45deg)
 	
 .notification-icon:hover
 	max-height 65 !important
 
 ul.notifications 
-	margin-top: -5px
 	border-bottom 1px solid lightgray
 	min-width 400px !important
 	max-width 400px !important
@@ -196,7 +199,7 @@ a.collection-item:hover
 	background-color #ffede5 !important
 
 .btn-flat:hover
-	background-color #ffd1ac
+	background-color lightgreen
 
 th
 	cursor pointer
