@@ -2,9 +2,7 @@
 
 angular.module('outboundApp')
   .controller 'MainCtrl', ($scope, $location) ->
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate'
-      'AngularJS'
-      'Karma'
-    ]
+    $scope.login = true
+    if (login)
+    	$location.path('/dashboard')
 
