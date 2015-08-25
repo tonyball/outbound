@@ -3,6 +3,6 @@
 angular.module('outboundApp')
   .controller 'MainCtrl', ($scope, $location) ->
     $scope.login = true
-    if (login)
+    if ($scope.login)
     	$location.path('/dashboard')
 
