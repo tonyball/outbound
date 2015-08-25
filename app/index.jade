@@ -26,34 +26,24 @@ body(ng-app="outboundApp")
       a(href="#/profile").black-text Profile
     li.divider
     li
-      a(href="#").black-text Manage Classroom
-    li
-      a(href="#").black-text My Students
-    li.divider
-    li
       a(href="#").black-text Account Settings
     li
       a(href="#").black-text User Guide
     li.divider
     li
-      a(href="#").black-text Log out
+      a(href="#").black-text Sign out
 
   ul.side-nav#slide-out-user
     li
       a(href="#/profile").black-text Profile
     li.divider
     li
-      a(href="#").black-text Manage Classroom
-    li
-      a(href="#").black-text My Students
-    li.divider
-    li
       a(href="#").black-text Account Settings
     li
       a(href="#").black-text User Guide
     li.divider
     li
-      a(href="#").black-text Log out 
+      a(href="#").black-text Sign out 
 
   ul.notifications.dropdown-content#notifications-dropdown
     div.notifications-header
@@ -70,14 +60,33 @@ body(ng-app="outboundApp")
       .grid-container
         div(ng-controller="SidebarCtrl")
           .grid-menu-item(ng-class="{ active: isActive('/dashboard')}")
-            a(href="").dashboard.black-text.madal-action.modal-close
+            a(href="#/dashboard").dashboard.black-text.madal-action.modal-close
               span Dashboard
           .grid-menu-item(ng-class="{ active: isActive('/profile')}")
-            a(href="").profile.black-text.madal-action.modal-close
+            a(href="#/profile/").profile.black-text.madal-action.modal-close
               span Profile
-          .grid-menu-item(ng-class="{ active: isActive('/medal')}")
-            a(href="").medal.black-text.madal-action.modal-close
-              span Medal
+          .grid-menu-item(ng-class="{ active: isActive('/subjects')}")
+            a(href="#/subjects").subjects.black-text.madal-action.modal-close
+              span Subjects
+          .grid-menu-item(ng-class="{ active: isActive('/exams')}")
+            a(href="#/exams").exams.black-text.madal-action.modal-close
+              span Exams
+          .grid-menu-item(ng-class="{ active: isActive('/cards')}")
+            a(href="#/cards").cards.black-text.madal-action.modal-close
+              span Cards
+          .grid-menu-item(ng-class="{ active: isActive('/manageclass')}")
+            a(href="#/manageclass").manageclass.black-text.madal-action.modal-close
+              span Manage Class
+          .grid-menu-item(ng-class="{ active: isActive('/classreport')}")
+            a(href="#/classreport").classreport.black-text.madal-action.modal-close
+              span Class Report
+          .grid-menu-item(ng-class="{ active: isActive('/studentactivity')}")
+            a(href="#/studentactivity").studentactivity.black-text.madal-action.modal-close
+              span Student Activity
+          .grid-menu-item(ng-class="{ active: isActive('/studentprogress')}")
+            a(href="#/studentprogress").studentprogress.black-text.madal-action.modal-close
+              span Student Progress
+          
 
   //- end bottom sheet menus
 
@@ -95,14 +104,29 @@ body(ng-app="outboundApp")
 
     div(ng-controller="SidebarCtrl").side-nav#slide-out
       .grid-menu-item(ng-class="{ active: isActive('/dashboard')}")
-        a(href="").dashboard
+        a(href="#/dashboard").dashboard
           span Dashboard
       .grid-menu-item(ng-class="{ active: isActive('/profile')}")
-        a(href="").profile
+        a(href="#/profile/").profile
           span Profile
-      .grid-menu-item(ng-class="{ active: isActive('/medal')}")
-        a(href="").medal
-          span Medal
+      .grid-menu-item(ng-class="{ active: isActive('/exams')}")
+        a(href="#/exams").exams
+          span Exams
+      .grid-menu-item(ng-class="{ active: isActive('/cards')}")
+        a(href="#/cards").cards
+          span Cards
+      .grid-menu-item(ng-class="{ active: isActive('/manageclass')}")
+        a(href="#/manageclass").manageclass
+          span Manage Class
+      .grid-menu-item(ng-class="{ active: isActive('/classreport')}")
+        a(href="#/classreport").classreport
+          span Class Report
+      .grid-menu-item(ng-class="{ active: isActive('/studentactivity')}")
+        a(href="#/studentactivity").studentactivity
+          span Student Activity
+      .grid-menu-item(ng-class="{ active: isActive('/studentprogress')}")
+        a(href="#/studentprogress").studentprogress
+          span Student Progress
 
 
     a(href="", data-activates="slide-out",style="margin-left: 0.5em").button-collapse.show-on-large.hide-on-small-only
@@ -140,10 +164,8 @@ body(ng-app="outboundApp")
   // build:js(.tmp) scripts/main.js
   script(src="scripts/app.js")
   script(src="scripts/controllers/main.js")
-  script(src="scripts/controllers/login.js")
   script(src="scripts/controllers/sidebar.js")
   script(src="scripts/controllers/dashboard.js")
-  script(src="scripts/controllers/profile/:userid.js")
   script(src="scripts/controllers/profile.js")
   script(src="scripts/controllers/classroom.js")
   script(src="scripts/controllers/cards.js")
@@ -156,6 +178,7 @@ body(ng-app="outboundApp")
   script(src="scripts/controllers/signin.js")
   script(src="scripts/controllers/signup.js")
   script(src="scripts/controllers/subjects.js")
+  script(src="scripts/controllers/notifications.js")
   // endbuild
 
   

@@ -51,5 +51,8 @@ angular
       .when '/subjects',
         templateUrl: 'views/subjects.html'
         controller: 'SubjectsCtrl'
+      .when '/notifications',
+        templateUrl: 'views/notifications.html'
+        controller: 'NotificationsCtrl'
       .otherwise
         redirectTo: '/'
