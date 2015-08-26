@@ -1,1 +1,40 @@
-p This is the subjects view.
+h3.grey-text.text-accent-2.center SUBJECTS
+
+center
+	.subject-filter-btn-container
+		.btn-flat.hoverable.active
+			img(src="images/icons/Books.png")
+			br
+			span All
+		.btn-flat.hoverable
+			img(src="images/icons/Math.png")
+			br
+			span Math
+		.btn-flat.hoverable
+			img(src="images/icons/Physics.png")
+			br
+			span Science
+		.btn-flat.hoverable
+			img(src="images/icons/Banknotes.png")
+			br
+			span Economics and Finance
+		.btn-flat.hoverable
+			img(src="images/icons/TheatreMask.png")
+			br
+			span Arts and Humanities
+		.btn-flat.hoverable
+			img(src="images/icons/Informatics.png")
+			br
+			span Computing
+		.btn-flat.hoverable
+			img(src="images/icons/Sheet.png")
+			br
+			span Test Preparation
+
+script.
+	$(document).ready(function(){
+		$('.btn-flat').on('click',function(){
+			$('.btn-flat').removeClass('active');
+			$(this).addClass('active');
+		});
+	})

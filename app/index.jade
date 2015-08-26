@@ -109,6 +109,9 @@ body(ng-app="outboundApp")
       .grid-menu-item(ng-class="{ active: isActive('/profile')}")
         a(href="#/profile/username").profile
           span Profile
+      .grid-menu-item(ng-class="{ active: isActive('/subjects')}")
+        a(href="#/subjects").subjects
+          span Subjects
       .grid-menu-item(ng-class="{ active: isActive('/exams')}")
         a(href="#/exams").exams
           span Exams

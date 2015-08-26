@@ -3,13 +3,13 @@ h3.grey-text.text-accent-2.center PROFILE
 	.col.s12.m10.l10.offset-m1.offset-l1
 		.card.animated.fadeIn
 			.card-content.grey.darken-2
-				span
+				span.hide-on-small-only
 					img(src="images/avatars/boy.png").left
 				span.card-title.white-text NAME LASTNAME 
 						em.green-text @username
 				.summary-coins-container
 					img(src="images/icons/Coins.png", width="24").left
-					b.yellow-text.text-darken-1 {{ 10000 | currency }}
+					b.yellow-text.text-darken-1 {{ 0 | currency:'OB ' }}
 					
 				.summary-cards-container.hide-on-small-only					
 					img(src="images/cards/1.png", height="34",data-position="top",data-delay="1",data-tooltip="0").tooltipped
@@ -24,24 +24,69 @@ h3.grey-text.text-accent-2.center PROFILE
 				p.location Bangkok, Thailand
 				.divider
 				br
-				a(href="").white-text.btn.green Card Collection 
-				a(href="").black-text.btn-flat Card Summary
-				a(href="").black-text.btn-flat Recent Activity
-				a(href="").black-text.btn-flat Progress
+				center.hide-on-med-and-down
+					a(data-value="card-collection").white-text.btn.green.card-collection-btn.action-btn Card Collection 
+					a(data-value="card-summary").black-text.btn-flat.card-summary-btn.action-btn Card Summary
+					a(data-value="recent-activity").black-text.btn-flat.recent-activity-btn.action-btn Recent Activity
+					a(data-value="learning-progress").black-text.btn-flat.progress-btn.action-btn Progress
+				.hide-on-large-only
+					select.browser-default
+						option(value="card-collection") Card Collection 
+						option(value="card-summary") Card Summary
+						option(value="recent-activity") Recent Activity
+						option(value="learning-progress") Learning Progress
 
 .row
 	.col.s12.m10.l10.offset-m1.offset-l1
-		.card.animated.slideInDown
+		//- card-collection
+		.card.data-card.card-collection.animated.fadeInDown
 			.card-content.green
-				img(src="images/icons/Cards.png").left
+				img(src="images/icons/StackPhotos.png").left
 				span.card-title.white-text Card Collection
 			.card-action
+				.card-collection-container
+					img(data-target="details-of-card",title="click to view this card",src="images/cards/1.png",data-position="top", data-delay="50", data-tooltip="Name").tooltipped.modal-trigger
+					img(data-target="details-of-card",title="click to view this card",src="images/cards/2.png",data-position="top", data-delay="50", data-tooltip="Name").tooltipped.modal-trigger
+					img(data-target="details-of-card",title="click to view this card",src="images/cards/3.png",data-position="top", data-delay="50", data-tooltip="Name").tooltipped.modal-trigger
+					img(data-target="details-of-card",title="click to view this card",src="images/cards/4.png",data-position="top", data-delay="50", data-tooltip="Name").tooltipped.modal-trigger
+					img(data-target="details-of-card",title="click to view this card",src="images/cards/5.png",data-position="top", data-delay="50", data-tooltip="Name").tooltipped.modal-trigger
+		//- card summary
+		.card.data-card.card-summary.animated
+			.card-content.green
+				img(src="images/icons/Cards.png").left
+				span.card-title.white-text Card Summary
+			.card-action
+				.card-collection-container
+		//- recent activity
+		.card.data-card.recent-activity.animated
+			.card-content.green
+				img(src="images/icons/Survey.png").left
+				span.card-title.white-text Recent Activity
+			.card-action
+				.card-collection-container
+		//- progress
+		.card.data-card.learning-progress.animated
+			.card-content.green
+				img(src="images/icons/GraduationCap.png").left
+				span.card-title.white-text Learning Progress
+			.card-action
+				.card-collection-container
 
+//- card's details modal
+#details-of-card.modal
+	.modal-content
+		a.modal-close.modal-action
+			i.material-icons.right.red-text close
+		img(src="images/cards/1.png").left
+		h3 Card Name
+		p cards description and details
+	
+//- end card's details modal
 
 
 //- edit profile button
-.fixed-action-btn(sytle="right:45px; bottom: 45px;")
-	a(data-target="edit-profile-modal").btn-floating.btn-large.green.darken-3.modal-trigger
+.fixed-action-btn(style="right: 45px; bottom: 45px;")
+	a(data-target="edit-profile-modal", data-position="left", data-delay="50", data-tooltip="Edit Profile").btn-floating.btn-large.green.darken-3.modal-trigger.tooltipped
 		i.material-icons.large mode_edit
 
 //- end edit profile button
@@ -58,6 +103,25 @@ h3.grey-text.text-accent-2.center PROFILE
 
 script.
 	$(document).ready(function(){
+		$('.card-summary,.recent-activity,.learning-progress').hide();
 		$('.tooltipped').tooltip({delay: 1});
 		$('.modal-trigger').leanModal();
+		$('.action-btn').on('click',function(){
+			$('.action-btn').addClass('black-text btn-flat');
+			$('.action-btn').removeClass('white-text btn green');
+			$(this).removeClass('black-text btn-flat');
+			$(this).addClass('white-text btn green');
+
+			switchCard('.'+$(this).attr('data-value'));
+		});
+		$('select').on('change',function(){
+			switchCard('.'+$(this).val());
+		});
+
+		var switchCard = function(card){
+			$('.data-card').removeClass('fadeInDown');
+			$('.data-card').addClass('fadeOut').hide();
+			$(card).removeClass('fadeOut');
+			$(card).addClass('fadeInDown').show();
+		}
 	})
