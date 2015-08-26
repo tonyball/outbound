@@ -51,8 +51,14 @@ angular
       .when '/subjects',
         templateUrl: 'views/subjects.html'
         controller: 'SubjectsCtrl'
-      .when '/notifications',
+      .when '/notifications/:userid',
         templateUrl: 'views/notifications.html'
         controller: 'NotificationsCtrl'
+      .when '/search',
+        templateUrl: 'views/search.html'
+        controller: 'SearchCtrl'
+      .when '/settings/:userid',
+        templateUrl: 'views/settings.html'
+        controller: 'SettingsCtrl'
       .otherwise
         redirectTo: '/'

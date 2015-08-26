@@ -23,7 +23,7 @@ body(ng-app="outboundApp")
   //- dropdown content
   ul.dropdown-content#user-dropdown
     li
-      a(href="#/profile").black-text Profile
+      a(href="#/profile/username").black-text Profile
     li.divider
     li
       a(href="#").black-text Account Settings
@@ -35,7 +35,7 @@ body(ng-app="outboundApp")
 
   ul.side-nav#slide-out-user
     li
-      a(href="#/profile").black-text Profile
+      a(href="#/profile/username").black-text Profile
     li.divider
     li
       a(href="#").black-text Account Settings
@@ -63,7 +63,7 @@ body(ng-app="outboundApp")
             a(href="#/dashboard").dashboard.black-text.madal-action.modal-close
               span Dashboard
           .grid-menu-item(ng-class="{ active: isActive('/profile')}")
-            a(href="#/profile/").profile.black-text.madal-action.modal-close
+            a(href="#/profile/username").profile.black-text.madal-action.modal-close
               span Profile
           .grid-menu-item(ng-class="{ active: isActive('/subjects')}")
             a(href="#/subjects").subjects.black-text.madal-action.modal-close
@@ -107,7 +107,7 @@ body(ng-app="outboundApp")
         a(href="#/dashboard").dashboard
           span Dashboard
       .grid-menu-item(ng-class="{ active: isActive('/profile')}")
-        a(href="#/profile/").profile
+        a(href="#/profile/username").profile
           span Profile
       .grid-menu-item(ng-class="{ active: isActive('/exams')}")
         a(href="#/exams").exams
@@ -179,6 +179,8 @@ body(ng-app="outboundApp")
   script(src="scripts/controllers/signup.js")
   script(src="scripts/controllers/subjects.js")
   script(src="scripts/controllers/notifications.js")
+  script(src="scripts/controllers/search.js")
+  script(src="scripts/controllers/settings.js")
   // endbuild
 
   

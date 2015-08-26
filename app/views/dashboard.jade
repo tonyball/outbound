@@ -1,5 +1,4 @@
 h3.grey-text.text-accent-2.center DASHBOARD
-h5.center You are...
 //- filter button
 .center-align
 	a.waves-effect.waves-light.btn.green.learn-btn Learning
@@ -10,16 +9,145 @@ h5.center You are...
 
 
 
+//- dashboard contents
+.row
+	.col.s12.m6.l4
+		.card.learning.animated.bounceInDown
+			.card-image.waves-effect.waves-block.waves-dark
+				img(src="images/logo.png").activator.responsive-img
+			.card-content
+				span.card-title.activator.black-text
+					i.material-icons.right more_vert
+					| Calculus I
+				br
+				em Classroom Code: 
+					b XZM4562
+
+				.row
+				center 
+					a.waves-effect.waves-green.btn.green.darken-1(href='#/classroom/XZM4562')
+						i.material-icons.left play_circle_outline
+						|  Resume
+					.row
+					.progress.green.lighten-4
+						.determinate.green(style="width: 10%")
+					b.right.green-text 10% finished
+
+				.row
+				i.material-icons.left local_offer
+				a(href="#").green-text Maths &nbsp
+				a(href="#").green-text Calculus
+				
+				
+			.card-action
+				center
+					a(data-target="studentlist-modal").modal-trigger.waves-effect.waves-green.btn-flat.black-text.hoverable
+						i.material-icons.left people
+						| Student List
+			.card-reveal
+				span.card-title.activator.black-text
+					| Calculus I
+					i.material-icons.right.red-text close
+				h6 Content List
+				ul.collection
+					li.collection-item A
+					li.collection-item B
+					li.collection-item C
+					li.collection-item D
+					li.collection-item E
+				
+
+				.center
+					b.title MR.TEACHER OUTBOUND
+					br 
+					| INSTRUCTOR
+
+	.col.s12.m6.l4
+		.card.teaching.animated.bounceOutUp
+			.card-image.waves-effect.waves-block.waves-dark
+				img(src="images/logo.png").activator.responsive-img
+			.card-content
+				span.card-title.activator.black-text
+					i.material-icons.right more_vert
+					| Calculus I
+				br
+				em Classroom Code: 
+					b XZM4562
+
+				.row
+				center 
+					a.waves-effect.waves-green.btn.green.darken-1(href='#/classroom/XZM4562')
+						i.material-icons.left play_circle_outline
+						|  Resume
+					.row
+					.progress.green.lighten-4
+						.determinate.green(style="width: 10%")
+					b.right.green-text 10% finished
+
+				.row
+				i.material-icons.left local_offer
+				a(href="#").green-text Maths &nbsp
+				a(href="#").green-text Calculus
+				
+				
+			.card-action
+				center
+					a(data-target="studentlist-modal").modal-trigger.waves-effect.waves-green.btn-flat.black-text.hoverable
+						i.material-icons.left people
+						| Student List
+			.card-reveal
+				span.card-title.activator.black-text
+					| Calculus I
+					i.material-icons.right.red-text close
+				h6 Content List
+				ul.collection
+					li.collection-item A
+					li.collection-item B
+					li.collection-item C
+					li.collection-item D
+					li.collection-item E
+				ul.collection
+					a(href="#/manageclass/XZM4562").collection-item.green-text.text-darken-1.center-align.waves-effect.waves-green จัดการห้องเรียน
+					a(href="#/studentprogress/XZM4562").collection-item.green-text.text-darken-1.center-align.waves-effect.waves-green  ติดตามนักเรียน
+					a(href="#/studentactivity/XZM4562").collection-item.green-text.text-darken-1.center-align.waves-effect.waves-green  งานนักเรียน
+
+				.center
+					b.title MR.TEACHER OUTBOUND
+					br 
+					| INSTRUCTOR	
+
+//- end contents
 
 
 
+//- studentlist modal
+#studentlist-modal.modal.modal-fixed-footer
+	.modal-content
+		h4 Calculus I | Students
+		ul.collection
+			li.collection-item.avatar
+				img(src="images/avatars/boy.png").circle
+				span.title @username
+				p name lastname
+				a(href="#profile/username", target="blank").green-text View Profile
 
+	.modal-footer
+		a(href="").modal-action.modal-close.waves-effect.waves-red.btn.red Close
+//- end studentlist modal
 
-
-
-
-
-
+//- search classroom modal
+#search-modal.modal
+	.modal-content
+		h5 Find a Classroom
+		.row
+			form.col.s12
+				.input-field
+					i.material-icons.prefix search
+					input(id="search-input" type="text" ng-model="search_query")
+					label(for="search-input") input a classroom code
+	.modal-footer
+		a(href="#/search?q={{search_query}}").modal-action.modal-close.waves-effect.waves-light.btn.green Search
+//- end search modal
 
 //- actions button
 .fixed-action-btn(style="bottom: 45px; right: 45px")
@@ -27,10 +155,7 @@ h5.center You are...
 		i.large.material-icons add 
 	ul
 		li
-			a.btn-floating.blue.tooltipped(data-position="left" data-delay="50" data-tooltip="Create an Exam")
-				i.material-icons note_add
-		li
-			a.btn-floating.yellow.darken-2.tooltipped(data-position="left" data-delay="50" data-tooltip="Find a Classroom")
+			a.btn-floating.yellow.darken-2.tooltipped.modal-trigger(data-target="search-modal" data-position="left" data-delay="50" data-tooltip="Find a Classroom")
 				i.material-icons school
 		li
 			a.btn-floating.red.darken-2.tooltipped(data-position="left" data-delay="50" data-tooltip="Create a Classroom")
@@ -39,9 +164,13 @@ h5.center You are...
 
 script.
 	$(document).ready(function(){
+		$('.modal-trigger').leanModal();
+		$('.teaching').hide();
 		$('.tooltipped').tooltip({delay: 50});
 		$('.learn-btn,.teach-btn').on('click', function(){
 			$('.teach-btn').toggleClass('btn green btn-flat');
 			$('.learn-btn').toggleClass('btn green btn-flat');
+			$('.learning').toggle().toggleClass('bounceInDown bounceOutUp');
+			$('.teaching').toggle().toggleClass('bounceInDown bounceOutUp');
 		})
 	});
