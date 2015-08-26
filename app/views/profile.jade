@@ -1,1 +1,63 @@
-p This is the profile view.
+h3.grey-text.text-accent-2.center PROFILE
+.row
+	.col.s12.m10.l10.offset-m1.offset-l1
+		.card.animated.fadeIn
+			.card-content.grey.darken-2
+				span
+					img(src="images/avatars/boy.png").left
+				span.card-title.white-text NAME LASTNAME 
+						em.green-text @username
+				.summary-coins-container
+					img(src="images/icons/Coins.png", width="24").left
+					b.yellow-text.text-darken-1 {{ 10000 | currency }}
+					
+				.summary-cards-container.hide-on-small-only					
+					img(src="images/cards/1.png", height="34",data-position="top",data-delay="1",data-tooltip="0").tooltipped
+					img(src="images/cards/2.png", height="34",data-position="top",data-delay="1",data-tooltip="0").tooltipped
+					img(src="images/cards/3.png", height="34",data-position="top",data-delay="1",data-tooltip="0").tooltipped
+					img(src="images/cards/4.png", height="34",data-position="top",data-delay="1",data-tooltip="0").tooltipped
+					img(src="images/cards/5.png", height="34",data-position="top",data-delay="1",data-tooltip="0").tooltipped
+					img(src="images/cards/6.png", height="34",data-position="top",data-delay="1",data-tooltip="0").tooltipped
+			.card-action
+				br
+				p.bio Bio Tell about your life 
+				p.location Bangkok, Thailand
+				.divider
+				br
+				a(href="").white-text.btn.green Card Collection 
+				a(href="").black-text.btn-flat Card Summary
+				a(href="").black-text.btn-flat Recent Activity
+				a(href="").black-text.btn-flat Progress
+
+.row
+	.col.s12.m10.l10.offset-m1.offset-l1
+		.card.animated.slideInDown
+			.card-content.green
+				img(src="images/icons/Cards.png").left
+				span.card-title.white-text Card Collection
+			.card-action
+
+
+
+//- edit profile button
+.fixed-action-btn(sytle="right:45px; bottom: 45px;")
+	a(data-target="edit-profile-modal").btn-floating.btn-large.green.darken-3.modal-trigger
+		i.material-icons.large mode_edit
+
+//- end edit profile button
+
+//- edit profile modal
+#edit-profile-modal.modal.modal-fixed-footer
+	.modal-content
+		h4 Edit Profile | @username
+	.modal-footer
+		a(href="").modal-action.modal-close.btn.red.waves-effect.waves-light Close
+		a(href="",style="margin-right: 10px").modal-action.modal-close.btn.green.waves-effect.waves-light Save
+		
+//- end modal
+
+script.
+	$(document).ready(function(){
+		$('.tooltipped').tooltip({delay: 1});
+		$('.modal-trigger').leanModal();
+	})
