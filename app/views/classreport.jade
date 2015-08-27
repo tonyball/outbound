@@ -1,1 +1,98 @@
-p This is the classreport view.
+h3.grey-text.text-accent-2.center CLASSROOM REPORT
+
+.col.s12.m4
+	label Classroom
+	select.browser-default.classroom-select
+		option(value="XZM4562" selected) Calculus I
+		option(value="XZM4563") Calculus 
+.col.s12.m4
+	label Report Type
+	select.browser-default.report-type
+		option(value="chart-report" selected) Chart Report
+		option(value="cards-report") Cards Report 
+
+.row.chart-report.report
+	.col.s12
+		.card.animated.fadeInDown
+			.card-content
+				span.card-title.black-text Calculus I
+				b.right 15 Students
+				//- #chart
+			.card-action
+				table.bordered.hoverable.centered.responsive-table
+					thead
+						tr.green.darken-2.white-text
+							th(data-field="std_time_max") Maximum Learning Time (max.)
+							th(data-field="std_time_min") Minimun Learning Time (min.)
+							th(data-field="std_time_avg") Average Learning Time (avg.)
+							th(data-field="std_score_max") Maximun OB Coins (max.)
+							th(data-field="std_score_min") Minimun OB Coins (min.)
+							th(data-field="std_score_avg") Average OB Coins (avg.)
+
+					tbody
+						tr
+							td 30 Minutes
+							td 4 Minutes
+							td 12 Minutes
+							td 98 OB Coins
+							td 42 OB Coins
+							td 80 OB Coins
+
+				b.right Classroom Code: XZM4562
+
+.row.cards-report.report
+	.col.s12
+		.card.animated.fadeInDown
+			.card-content
+				span.card-title.black-text Calculus I
+				b.right 15 Students
+
+				table.bordered
+					thead
+						tr.green.darken-2.white-text
+							th Student Name
+							th Student Cards
+
+					tbody
+						tr
+							td(width="25%") 
+								a(href="#/profile/username").green-text Name Lastname
+							td 
+								.show-summary-cards
+									.card-box
+										b Card Name
+										br
+										img(ng-src="images/cards/1.png",data-position="top",data-delay="50",data-tooltip="description...").user-badges.tooltipped
+									.card-box
+										b Card Name
+										br
+										img(ng-src="images/cards/1.png",data-position="top",data-delay="50",data-tooltip="description...").user-badges.tooltipped
+									.card-box
+										b Card Name
+										br
+										img(ng-src="images/cards/1.png",data-position="top",data-delay="50",data-tooltip="description...").user-badges.tooltipped
+									.card-box
+										b Card Name
+										br
+										img(ng-src="images/cards/1.png",data-position="top",data-delay="50",data-tooltip="description...").user-badges.tooltipped
+									.card-box
+										b Card Name
+										br
+										img(ng-src="images/cards/1.png",data-position="top",data-delay="50",data-tooltip="description...").user-badges.tooltipped
+									.card-box
+										b Card Name
+										br
+										img(ng-src="images/cards/1.png",data-position="top",data-delay="50",data-tooltip="description...").user-badges.tooltipped
+			.card-action
+				b.right Classroom Code: XZM4562
+
+script.
+	$(document).ready(function(){
+		$('select').material_select();
+		$('.tooltipped').tooltip({delay: 50});
+		$('.cards-report').hide();
+		$('.report-type').on('change',function(){
+			$('.report').hide();
+			$('.'+$(this).val()).show();
+		});
+	})

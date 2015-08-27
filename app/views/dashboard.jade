@@ -74,16 +74,6 @@ h3.grey-text.text-accent-2.center DASHBOARD
 					b XZM4562
 
 				.row
-				center 
-					a.waves-effect.waves-green.btn.green.darken-1(href='#/classroom/XZM4562')
-						i.material-icons.left play_circle_outline
-						|  Resume
-					.row
-					.progress.green.lighten-4
-						.determinate.green(style="width: 10%")
-					b.right.green-text 10% finished
-
-				.row
 				i.material-icons.left local_offer
 				a(href="#").green-text Maths &nbsp
 				a(href="#").green-text Calculus
@@ -163,6 +153,7 @@ h3.grey-text.text-accent-2.center DASHBOARD
 
 script.
 	$(document).ready(function(){
+		$('.modal-trigger').leanModal();
 		$('.teaching').hide();
 		$('.tooltipped').tooltip({delay: 50});
 		$('.learn-btn,.teach-btn').on('click', function(){
