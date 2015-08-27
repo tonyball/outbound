@@ -21,6 +21,13 @@ footer
 	margin-bottom: -20px !important
 	position relative
 
+.card-collection-container
+	white-space nowrap
+	overflow auto
+	img
+		cursor pointer
+		:hover
+			background-color rgba(0,0,0,0,0.5)			
 
 .container 
 	// min-height 100%
@@ -303,7 +310,23 @@ form.answer-set
 .collection-item.active
 	background-color #fff !important
 	font-weight bold
-
+	
+.subject-filter-btn-container
+	.btn-flat
+		height initial !important	
+		border none
+		span
+			display inherit !important
+	.btn-flat:hover
+		background-color white
+		border 1px solid lightgray
+	
+	.btn-flat.active
+		font-weight bolder
+		color green
+		background-color white
+		box-shadow 2px 2px 10px gray
+		border 1px solid green
 
 [type="radio"]:not(:checked)+label, [type="radio"]:checked+label 
 	height 19px !important
