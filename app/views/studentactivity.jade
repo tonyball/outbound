@@ -1,1 +1,96 @@
-p This is the studentactivity view.
+h3.grey-text.text-accent-2.center STUDENT ACTIVITY
+
+.col.s12.m4
+	label Classroom
+	select.browser-default
+		option(value="XZM4562" selected) Calculus I
+		option(value="XZM4563") Calculus II
+.row
+center
+	.subject-filter-btn-container
+		.btn-flat.hoverable.active(data-value="content")
+			img(src="images/icons/Details.png")
+			br
+			span All
+		.btn-flat.hoverable(data-value="type-video")
+			img(src="images/icons/FilmReel.png")
+			br
+			span Video
+		.btn-flat.hoverable(data-value="type-practice")
+			img(src="images/icons/Reading.png")
+			br
+			span Practice
+		.btn-flat.hoverable(data-value="type-test")
+			img(src="images/icons/Sheet.png")
+			br
+			span Test
+
+//- activity list card
+.row
+	.col.s12
+		.card.animated.bounceInDown
+			.card-content
+				span.card-title.black-text Calculus I 	
+				ul.collapsible(data-collapsible="accordion")
+					li.content.type-video
+						.collapsible-header
+							i.material-icons local_movies
+							| Video Title
+							i.material-icons.right arrow_drop_down
+						.collapsible-body
+							.row
+								.std-activity.col.s4.m4.l4.animated.fadeIn.grey.lighten-2
+									b.black-text Not Started
+
+								.std-activity.col.s4.m4.l4.animated.fadeIn.green.lighten-2
+									b.black-text Started
+
+								.std-activity.col.s4.m4.l4.animated.fadeIn.green.darken-2
+									b.white-text Completed
+					li.content.type-practice
+						.collapsible-header
+							i.material-icons border_color
+							| Practice Title
+							i.material-icons.right arrow_drop_down
+						.collapsible-body
+							.row
+								.std-activity.col.s4.m4.l4.animated.fadeIn.grey.lighten-2
+									b.black-text Not Started
+
+								.std-activity.col.s4.m4.l4.animated.fadeIn.green.lighten-2
+									b.black-text Started
+
+								.std-activity.col.s4.m4.l4.animated.fadeIn.green.darken-2
+									b.white-text Completed
+					li.content.type-test
+						.collapsible-header
+							i.material-icons insert_drive_file
+							| Test Title
+							i.material-icons.right arrow_drop_down
+						.collapsible-body
+							.row
+								.std-activity.col.s4.m4.l4.animated.fadeIn.grey.lighten-2
+									b.black-text Not Started
+
+								.std-activity.col.s4.m4.l4.animated.fadeIn.green.lighten-2
+									b.black-text Started
+
+								.std-activity.col.s4.m4.l4.animated.fadeIn.green.darken-2
+									b.white-text Completed						
+//- end activity list card
+
+script.
+	$(document).ready(function(){
+		$('.collapsible').collapsible({ accordion : false });
+		$('.btn-flat').on('click',function(){
+			$('.btn-flat').removeClass('active');
+			$(this).addClass('active');
+
+			filterContent('.'+$(this).attr('data-value'));
+		});
+
+		var filterContent = function(subject){
+			$('.content').hide();
+			$(subject).show();
+		}
+	})

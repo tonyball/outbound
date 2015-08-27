@@ -1,1 +1,135 @@
-p This is the classroom view.
+.row
+	//- classroom side navigaters
+	.col.s12.m12.l3
+		.card.animated.zoomIn
+			.card-image
+				img(src="images/logo.png").hide-on-med-and-down
+			.card-content
+				span.card-title.black-text Calculus I | XZM4562
+				//- section is an array that contains an array which contains the contents
+				ul.collapsible.z-depth-0.classrooom-sidenav(data-collapsible="accordion")
+					//- one 'li' one classroom section (specify by user when create that how many section(s) will have in the class)
+					li
+						.collapsible-header.active
+							i.material-icons.left keyboard_arrow_down
+							|  Basic
+						.collapsible-body
+							ul.collection
+								a(data-title="Limit and Function",data-href="",data-type="video").content-link.black-text.collection-item.waves-effect.waves-green
+									i.material-icons.left.blue-text local_movies
+									| Limit and Function
+									.secondary-content
+								a(data-title="Limit and Function",data-href="avatars/boy.png",data-type="practice").content-link.black-text.collection-item.waves-effect.waves-green
+									i.material-icons.left.brown-text border_color
+									| Limit and Function
+									.secondary-content
+								a(data-title="Limit and Function",data-href="",data-type="video").content-link.black-text.collection-item.waves-effect.waves-green
+									i.material-icons.left.green-text question_answer
+									| Limit and Function
+									.secondary-content
+					li
+						.collapsible-header.active
+							i.material-icons.left keyboard_arrow_down
+							|  Intensive
+						.collapsible-body
+							ul.collection
+								a(data-title="Limit and Function",data-href="",data-type="video").content-link.black-text.collection-item.waves-effect.waves-green
+									i.material-icons.left.blue-text local_movies
+									| Limit and Function
+									.secondary-content
+								a(data-title="Limit and Function",data-href="",data-type="practice").content-link.black-text.collection-item.waves-effect.waves-green
+									i.material-icons.left.brown-text border_color
+									| Limit and Function
+									.secondary-content
+								a(data-title="Limit and Function",data-href="",data-type="video").content-link.black-text.collection-item.waves-effect.waves-green
+									i.material-icons.left.green-text question_answer
+									| Limit and Function
+									.secondary-content
+					li
+						.collapsible-header.active
+							i.material-icons.left keyboard_arrow_down
+							|  Test
+						.collapsible-body
+							ul.collection
+								a(data-title="Limit and Function",data-href="XZM4562.pdf",data-type="test").content-link.black-text.collection-item.waves-effect.waves-green
+									i.material-icons.left.red-text insert_drive_file
+									| Calculus I
+									.secondary-content
+			.card-action
+				i.material-icons.left local_offer
+				a(href="").green-text Calculus &nbsp
+				a(href="").green-text Math
+
+	//- video's card
+	.col.s12.m12.l9
+		.card.animated.zoomIn
+			.card-content
+				span.card-title.black-text.content-title Limit and Function
+				.video-container.content-container
+					video#video-item(src="videos/dlit_maths_set/01.mp4",controls, width="100%", type="video/*")
+				.practice-container.content-container
+					img#practice-item(src="images/avatars/boy-lg.png", width="100%")
+					.answer-container
+					
+				.test-container.content-container
+					object#test-item(width="100%", height="550", data="", type="application/pdf")
+					.answer-container
+
+			.card-action.white
+				.video-container-action.action-container
+					.left
+						b Playback Speed
+						br
+						button(onclick="adjustSpeed(1);").btn.pink.waves-effect.waves-light X1
+						button(onclick="adjustSpeed(1.5);").btn.pink.waves-effect.waves-light X1.5
+						button(onclick="adjustSpeed(2);").btn.pink.waves-effect.waves-light X2
+					.right.hide-on-small-only
+						br
+						button.btn.blue.waves-effect.waves-light
+							i.material-icons.left cloud_download
+							| Video Download
+						button.btn.green.waves-effect.waves-light
+							i.material-icons.left file_download
+							| Slide Download
+					.row
+
+				.test-container-action.practice-container-action.action-container
+					.right
+						button.btn.green.waves-effect.waves-light Check Answer
+					.row
+
+
+script.
+	var adjustSpeed = function(speed){
+		var vid = document.getElementById('video-item');
+		vid.playbackRate = speed;
+	}
+
+	$(document).ready(function(){
+		$('.collapsible').collapsible({ accordion : false });
+		$('.test-container-action, .practice-container, .test-container').hide();
+		$('.content-link').first().addClass('active');
+		$('.content-title').text($('.content-link').first().attr('data-title'));
+
+		$('.content-link').on('click', function(){
+			$('.content-link').removeClass('active');
+			$(this).addClass('active');
+
+			switchContent('.'+$(this).attr('data-type')+'-container',$(this).attr('data-type'), $(this).attr('data-href'), $(this).attr('data-title'));
+		});
+
+		var switchContent = function(content, type, url, title){
+			$('.content-container, .action-container').hide();
+			$(content+','+content+'-action').show();
+
+			$('.content-title').text(title);
+
+			if (type == 'video') {
+				$('#video-item').attr('src', 'videos/'+url);
+			} else if (type == 'practice') {
+				$('#practice-item').attr('src', 'images/'+url);
+			} else {
+				$('#test-item').attr('data', 'pdf/'+url);
+			}
+		}
+	})

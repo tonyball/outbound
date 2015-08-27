@@ -10,7 +10,8 @@
     "angular-sanitize": "latest",
     "angular-route": "latest",
     "angular-materialize": "*",
-    "animate.css": "~3.4.0"
+    "animate.css": "~3.4.0",
+    "ng-simplePagination": "~1.0.3"
   },
   "devDependencies": {
     "angular-mocks": "latest",

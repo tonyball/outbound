@@ -17,6 +17,7 @@ head
   link(rel="stylesheet", href="styles/main.css")
   // endbuild
   link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+  link(rel="stylesheet", href="scripts/flipclock/flipclock.css")
 
 body(ng-app="outboundApp")
   
@@ -138,11 +139,10 @@ body(ng-app="outboundApp")
     a(href="" data-target="mobile-menu",style="margin-left: 0.5em").modal-trigger.hide-on-med-and-up
       i.small.material-icons.black-text apps
 
-  div.row      
+  div.row.view-container      
     div(ng-view)
   
-  div.container
-  footer.row.footer-copyright.grey.accent-1
+  footer.row.footer-copyright.grey.lighten-2
       div.text-left.col.m12.grey-text.text-darken-2.center-align
         p outbound &copy 2015
 
@@ -161,8 +161,11 @@ body(ng-app="outboundApp")
   script(src='bower_components/angular-route/angular-route.js')
   script(src='bower_components/materialize/bin/materialize.js')
   script(src='bower_components/angular-materialize/src/angular-materialize.js')
+  script(src='bower_components/ng-simplePagination/simplePagination.js')
   // endbower
   // endbuild
+
+  script(src="scripts/flipclock/flipclock.min.js")
 
   // build:js(.tmp) scripts/main.js
   script(src="scripts/app.js")
@@ -184,7 +187,6 @@ body(ng-app="outboundApp")
   script(src="scripts/controllers/notifications.js")
   script(src="scripts/controllers/search.js")
   script(src="scripts/controllers/settings.js")
-  script(src="scripts/controllers/addclassroom.js")
   script(src="scripts/controllers/enrollclassroom.js")
   // endbuild
 

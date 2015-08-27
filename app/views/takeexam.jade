@@ -1,1 +1,97 @@
-p This is the takeexam view.
+//- modal warning before taking the exam
+#exam-modal.modal
+	.modal-content
+		h5.center-align {{exam.title}} ( {{exam.number_of_question}} Questions | {{exam.time}} Minutes )
+		center
+			a(style="margin-right:10px").modal-action.modal-close.waves-effect.waves-light.btn.green.start-exam Start
+			a(href="#/exams").modal-action.modal-close.waves-effect.waves-light.btn.red.back Back 
+			
+		
+
+//- clock timer for exam
+.row
+.exam-clock.col.offset-m4
+
+.row
+	//- question sheet card
+	.col.m8.l8
+		.card
+			.card-content
+				span.card-title.black-text  {{exam.title}} ({{exam.number_of_question}} Questions)
+				object(width="100%",height="600", data="{{exam.content_url}}",type='application/pdf')
+			.card-action
+				b.left Exam code: {{ exam.code }} | Subject: {{exam.subject_name}}
+				b.right Taking on {{ datetime | date:"dd MMMM yyyy 'at' hh:mm a"}} 
+				br
+
+	//- answer sheet card
+	.col.m4.l4
+		.card
+			.card-content
+				span.card-title.black-text Answer Sheet
+				.row
+					h6 Q. | 1 &nbsp&nbsp&nbsp&nbsp2 &nbsp&nbsp&nbsp&nbsp3 &nbsp&nbsp&nbsp&nbsp4 &nbsp&nbsp&nbsp&nbsp5
+					.divider
+				.row(ng-repeat="answer in answer_box | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage")
+					p.no.left-align {{answer}}. |
+					form.answer-set
+						input(name="no{{answer}}",type="radio",id="ans{{answer}}1")
+						label(for="ans{{answer}}1")
+
+						input(name="no{{answer}}",type="radio",id="ans{{answer}}2")
+						label(for="ans{{answer}}2") 
+
+						input(name="no{{answer}}",type="radio",id="ans{{answer}}3")
+						label(for="ans{{answer}}3") 
+
+						input(name="no{{answer}}",type="radio",id="ans{{answer}}4")
+						label(for="ans{{answer}}4")
+
+						input(name="no{{answer}}",type="radio",id="ans{{answer}}5")
+						label(for="ans{{answer}}5")  		
+		
+				ul.pagination
+					li(ng-class="{disabled: pagination.page == 0}",ng-click="pagination.prevPage()")
+						a
+							i.material-icons chevron_left
+					li.waves-effect.waves-green(ng-repeat="n in [] | range: pagination.numPages", ng-class="{active: n == pagination.page}",ng-click="pagination.toPageId(n)")
+						a {{n+1}}
+					li(ng-class="{disabled: pagination.page + 1 >= pagination.numPages}",ng-click="pagination.nextPage()")
+						a
+							i.material-icons chevron_right
+				br
+			.card-action
+				center
+					a(href="",type="submit").btn.green.waves-effect.waves-light.finish-exam.white-text
+						i.material-icons.left assignment_turned_in
+						| Submit
+					br
+
+//- action button student (show clipboard)
+div(style="bottom: 55px; right: 55px;",ng-show="isStudent").fixed-action-btn.animated.fadeInDown
+	a(href="#clipboard-modal",data-position="top",data-delay="50",data-tooltip="แสดงกระดาษทด").modal-trigger.btn-floating.btn-large.green.darken-2.waves-effect.waves-light.btn.tooltipped
+		i.large.material-icons.right content_paste
+
+//- clipboard's modal
+#clipboard-modal.modal.bottom-sheet
+	.modal-content
+		h4
+			i.material-icons.right.red-text.modal-action.modal-close.waves-effect.waves-dark close 
+			| Clipboard
+		textarea.materialize-textarea
+
+script.
+	$(document).ready(function(){
+		$('.modal-trigger').leanModal();
+		$('.tooltipped').tooltip({delay: 50});
+		$('#exam-modal').openModal({dismissible: false});
+		var clock = $('.exam-clock').FlipClock({autoStart:false, clockFace:'MinuteCounter'});
+		clock.setTime(7200);
+		clock.setCountdown(true);
+		$('.start-exam').click(function(){
+			clock.start();
+		});
+		$('.finish-exam').click(function(){
+			clock.stop();
+		});
+	})
