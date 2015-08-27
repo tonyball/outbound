@@ -21,6 +21,9 @@ angular
       .when '/classroom/:classcode',
         templateUrl: 'views/classroom.html'
         controller: 'ClassroomCtrl'
+      .when '/classroom/enroll/:classcode',
+        templateUrl: 'views/subjects.html'
+        controller: 'EnrollclassroomCtrl'
       .when '/cards',
         templateUrl: 'views/cards.html'
         controller: 'CardsCtrl'

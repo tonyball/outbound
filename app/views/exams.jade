@@ -1,40 +1,94 @@
 h3.grey-text.text-accent-2.center EXAMS
 
-center
+.row
+	select.browser-default.hide-on-med-and-up
+		option(value="exam-card") All
+		option(value="math") Math
+		option(value="science") Science
+		option(value="art-hum") Arts and Humanities
+		option(value="computing") Computing
+
+
+center.hide-on-small-only
 	.subject-filter-btn-container
-		.btn-flat.hoverable.active
-			img(src="images/icons/Clipboard.png")
+		.btn-flat.hoverable.active(data-value="exam-card")
+			img(src="images/icons/Books.png")
 			br
 			span All
-		.btn-flat.hoverable
-			img(src="images/icons/Math.png")
+		.btn-flat.hoverable(data-value="math")
+			img(src="images/icons/Sigma.png")
 			br
 			span Math
-		.btn-flat.hoverable
+		.btn-flat.hoverable(data-value="science")
 			img(src="images/icons/Physics.png")
 			br
 			span Science
-		.btn-flat.hoverable
+		.btn-flat.hoverable(data-value="eco-finance")
 			img(src="images/icons/Banknotes.png")
 			br
 			span Economics and Finance
-		.btn-flat.hoverable
+		.btn-flat.hoverable(data-value="art-hum")
 			img(src="images/icons/TheatreMask.png")
 			br
 			span Arts and Humanities
-		.btn-flat.hoverable
+		.btn-flat.hoverable(data-value="computing")
 			img(src="images/icons/Informatics.png")
 			br
 			span Computing
-		.btn-flat.hoverable
-			img(src="images/icons/Sheet.png")
-			br
-			span Test Preparation
+
+//- exam list card
+.row
+.row
+	.col.s12.m6.l4.exam-card.math
+		.card.animated.bounceInDown
+			.card-content
+				span.card-title.black-text Calculus I | 25 Questions
+				br
+				b Math | 
+				em Exam Code: 
+					b MATH3229
+				ul.collapsible(data-collapsible="accordion")
+					li
+						.collapsible-header(style="border-bottom:0px")
+							i.material-icons.left keyboard_arrow_down
+							| Exam Contents
+						.collapsible-body
+							ul.collection.with-header
+								li.collection-item A
+								li.collection-item B
+								li.collection-item C
+								li.collection-item D
+								li.collection-item E
+
+				b Time Limit 90 Minutes
+				.row
+				i.material-icons.left local_offer
+				a(href="#").green-text Maths &nbsp
+				a(href="#").green-text Calculus
+
+			.card-action
+				center
+					a.btn.green.waves-effect.waves-light.hide-on-small-only.white-text(href="#/takeexam/MATH3229") 
+						i.material-icons.left send
+						| Take the Exam
+					em.hide-on-med-and-up.red-text your device is not suitable for taking the exam
+//- end exam list card
 
 script.
 	$(document).ready(function(){
 		$('.btn-flat').on('click',function(){
 			$('.btn-flat').removeClass('active');
 			$(this).addClass('active');
+
+			filterSubject('.'+$(this).attr('data-value'));
 		});
+		$('select').on('change',function(){
+			filterSubject('.'+$(this).val());
+		});
+
+		var filterSubject = function(subject){
+			$('.exam-card').hide();
+			$(subject).show();
+		}
+		$('.collapsible').collapsible({accordion : false });
 	})
