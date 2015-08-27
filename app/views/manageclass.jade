@@ -1,1 +1,72 @@
-p This is the manageclass view.
+h3.grey-text.text-accent-2.center MANAGE CLASSROOM
+
+.row
+.col.s12.m4
+	label Classroom
+	select.browser-default
+		option(value="XZM4562" selected) Calculus I
+		option(value="XZM4563") Calculus II
+
+.row
+.col.s12
+	.card.animated.fadeInDown
+		.card-content
+			span.card-title.black-text Calculus I 
+			b.right 15 Students
+			table.bordered.hoverable
+					thead
+						tr.green.darken-2.white-text
+							th(data-field="std_username") Username
+							th(data-field="std_fullname") Fullname
+							th(data-field="std_email") E-Mail
+					tbody
+						tr
+							td 
+								a(href="") @username
+							td Name Lastname
+							td email@email.com
+						tr
+							td 
+								a(href="") @username
+							td Name Lastname
+							td email@email.com
+						tr
+							td 
+								a(href="") @username
+							td Name Lastname
+							td email@email.com
+						tr
+							td 
+								a(href="") @username
+							td Name Lastname
+							td email@email.com
+						tr
+							td 
+								a(href="") @username
+							td Name Lastname
+							td email@email.com
+
+		.card-action
+			a(href="#/classreport/XZM4562").waves-effect.waves-orange.btn-flat.black-text.hoverable
+				i.material-icons.left insert_chart
+				| Class Report
+			a(href="#/studentactivity/XZM4562").waves-effect.waves-orange.btn-flat.black-text.hoverable
+				i.material-icons.left local_library
+				| Student Activity
+			a(href="#/studentprogress/XZM4562").waves-effect.waves-orange.btn-flat.black-text.hoverable
+				i.material-icons.left description
+				| Student Progress
+			b.right Class Code: XZM4562
+
+//- actions button
+.fixed-action-btn(style="bottom: 45px; right: 45px")
+	a.btn-floating.btn-large.green.darken-1.tooltipped(data-position="left" data-delay="50" data-tooltip="Edit Classroom")
+		i.large.material-icons mode_edit 
+//- end actions button
+
+
+
+script.
+	$(document).ready(function(){
+		$('.tooltipped').tooltip({delay: 50});
+	})
