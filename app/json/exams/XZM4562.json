@@ -1,0 +1,14 @@
+{
+	"id":"1",
+	"title":"Calculus I",
+	"topics":["Limits and Derivatives","Differentiation Rules","Applications of Differentiation","Integrals"],
+	"subject_id":"1",
+	"description":"Calculus I Midterm Exam",
+	"number_of_question":40,
+	"answer_set":[{}],
+	"code":"XZM4562",
+	"url":"pdf/XZM4562.pdf",
+	"tags":["Calculus I","Math","Limits","Function","Differentiation","Integrals"],
+	"time":120,
+	"degree":"average"
+}
