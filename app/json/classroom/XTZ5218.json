@@ -1,0 +1,14 @@
+{
+	"id":"1",
+	"title":"Calculus I",
+	"topics":["Limits and Derivatives","Differentiation Rules","Applications of Differentiation","Integrals"],
+	"code":"XTZ5218",
+	"duration": 0,
+	"image":"maths-logo.jpg",
+	"username":"itouchz",
+	"teacher_name":"Weeraphat S.",
+	"subject":"Math",
+	"degree":"Easy",
+	"section":[{}],
+	"tags":["Calculus", "Math"]
+}

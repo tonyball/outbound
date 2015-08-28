@@ -1,202 +1,202 @@
 doctype html
-html
-head
-  meta(charset="utf-8")
-  meta(http-equiv="X-UA-Compatible", content="IE=edge")
-  title outbound | the more you know the further you go
-  meta(name="description", content="")
-  meta(name="viewport", content="width=device-width")
-  // Place favicon.ico and apple-touch-icon.png in the root directory
-  // build:css styles/vendor.css
-  // bower:css
-  link(rel='stylesheet', href='bower_components/materialize/bin/materialize.css')
-  link(rel='stylesheet', href='bower_components/animate.css/animate.css')
-  // endbower
-  // endbuild
-  // build:css(.tmp) styles/main.css
-  link(rel="stylesheet", href="styles/main.css")
-  // endbuild
-  link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
-  link(rel="stylesheet", href="scripts/flipclock/flipclock.css")
+html(ng-controller="DashboardCtrl")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    title outbound | the more you know the further you go
+    meta(name="description", content="")
+    meta(name="viewport", content="width=device-width")
+    // Place favicon.ico and apple-touch-icon.png in the root directory
+    // build:css styles/vendor.css
+    // bower:css
+    link(rel='stylesheet', href='bower_components/materialize/bin/materialize.css')
+    link(rel='stylesheet', href='bower_components/animate.css/animate.css')
+    // endbower
+    // endbuild
+    // build:css(.tmp) styles/main.css
+    link(rel="stylesheet", href="styles/main.css")
+    // endbuild
+    link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+    link(rel="stylesheet", href="scripts/flipclock/flipclock.css")
 
-body(ng-app="outboundApp")
-  
-  //- dropdown content
-  ul.dropdown-content#user-dropdown
-    li
-      a(href="#/profile/username").black-text Profile
-    li.divider
-    li
-      a(href="#").black-text Account Settings
-    li
-      a(href="#").black-text User Guide
-    li.divider
-    li
-      a(href="#").black-text Sign out
+  body(ng-app="outboundApp")
+    
+    //- dropdown content
+    ul.dropdown-content#user-dropdown
+      li
+        a(href="#/profile/username").black-text Profile
+      li.divider
+      li
+        a(href="#").black-text Account Settings
+      li
+        a(href="#").black-text User Guide
+      li.divider
+      li
+        a(href="#").black-text Sign out
 
-  ul.side-nav#slide-out-user
-    li
-      a(href="#/profile/username").black-text Profile
-    li.divider
-    li
-      a(href="#").black-text Account Settings
-    li
-      a(href="#").black-text User Guide
-    li.divider
-    li
-      a(href="#").black-text Sign out 
+    ul.side-nav#slide-out-user
+      li
+        a(href="#/profile/username").black-text Profile
+      li.divider
+      li
+        a(href="#").black-text Account Settings
+      li
+        a(href="#").black-text User Guide
+      li.divider
+      li
+        a(href="#").black-text Sign out 
 
-  ul.notifications.dropdown-content#notifications-dropdown
-    div.notifications-header
-      header.black-text Notifications
-    li.divider
-    li
-      a.notify-item.black-text No Notifications
-  //- end dropdown content
+    ul.notifications.dropdown-content#notifications-dropdown
+      div.notifications-header
+        header.black-text Notifications
+      li.divider
+      li
+        a.notify-item.black-text No Notifications
+    //- end dropdown content
 
-  //- bottom sheet menus
-  #mobile-menu.modal.bottom-sheet
-    .modal-content
-      i.material-icons.right.red-text.modal-action.modal-close close
-      .grid-container
-        div(ng-controller="SidebarCtrl")
-          .grid-menu-item(ng-class="{ active: isActive('/dashboard')}")
-            a(href="#/dashboard").dashboard.black-text.madal-action.modal-close
-              span Dashboard
-          .grid-menu-item(ng-class="{ active: isActive('/profile')}")
-            a(href="#/profile/username").profile.black-text.madal-action.modal-close
-              span Profile
-          .grid-menu-item(ng-class="{ active: isActive('/subjects')}")
-            a(href="#/subjects").subjects.black-text.madal-action.modal-close
-              span Subjects
-          .grid-menu-item(ng-class="{ active: isActive('/exams')}")
-            a(href="#/exams").exams.black-text.madal-action.modal-close
-              span Exams
-          .grid-menu-item(ng-class="{ active: isActive('/cards')}")
-            a(href="#/cards").cards.black-text.madal-action.modal-close
-              span Cards
-          .grid-menu-item(ng-class="{ active: isActive('/manageclass')}")
-            a(href="#/manageclass").manageclass.black-text.madal-action.modal-close
-              span Manage Class
-          .grid-menu-item(ng-class="{ active: isActive('/classreport')}")
-            a(href="#/classreport").classreport.black-text.madal-action.modal-close
-              span Class Report
-          .grid-menu-item(ng-class="{ active: isActive('/studentactivity')}")
-            a(href="#/studentactivity").studentactivity.black-text.madal-action.modal-close
-              span Student Activity
-          .grid-menu-item(ng-class="{ active: isActive('/studentprogress')}")
-            a(href="#/studentprogress").studentprogress.black-text.madal-action.modal-close
-              span Student Progress
-          
+    //- bottom sheet menus
+    #mobile-menu.modal.bottom-sheet
+      .modal-content
+        i.material-icons.right.red-text.modal-action.modal-close close
+        .grid-container
+          div(ng-controller="SidebarCtrl")
+            .grid-menu-item(ng-class="{ active: isActive('/dashboard')}")
+              a(href="#/dashboard").dashboard.black-text.madal-action.modal-close
+                span Dashboard
+            .grid-menu-item(ng-class="{ active: isActive('/profile')}")
+              a(href="#/profile/username").profile.black-text.madal-action.modal-close
+                span Profile
+            .grid-menu-item(ng-class="{ active: isActive('/subjects')}")
+              a(href="#/subjects").subjects.black-text.madal-action.modal-close
+                span Subjects
+            .grid-menu-item(ng-class="{ active: isActive('/exams')}")
+              a(href="#/exams").exams.black-text.madal-action.modal-close
+                span Exams
+            .grid-menu-item(ng-class="{ active: isActive('/cards')}")
+              a(href="#/cards").cards.black-text.madal-action.modal-close
+                span Cards
+            .grid-menu-item(ng-class="{ active: isActive('/manageclass')}")
+              a(href="#/manageclass").manageclass.black-text.madal-action.modal-close
+                span Manage Class
+            .grid-menu-item(ng-class="{ active: isActive('/classreport')}")
+              a(href="#/classreport").classreport.black-text.madal-action.modal-close
+                span Class Report
+            .grid-menu-item(ng-class="{ active: isActive('/studentactivity')}")
+              a(href="#/studentactivity").studentactivity.black-text.madal-action.modal-close
+                span Student Activity
+            .grid-menu-item(ng-class="{ active: isActive('/studentprogress')}")
+              a(href="#/studentprogress").studentprogress.black-text.madal-action.modal-close
+                span Student Progress
+            
 
-  //- end bottom sheet menus
+    //- end bottom sheet menus
 
-  nav.white
-    ul.right  
-      li.notification-icon
-        a(href="", data-activates="notifications-dropdown").black-text.noti-dropdown-button
-          i.small.material-icons notifications 
-      li.hide-on-small-only
-        img(src="images/avatars/boy.png", alt="profile avatar", height="58").left.hide-on-med-and-down.user-avatar
-        a(href="#", data-activates="user-dropdown").black-text.waves-effect.waves-green.dropdown-button MR.OUTBOUND KASETSART
-          i.small.material-icons.right.arrow-dropdown arrow_drop_down
-      li.hide-on-med-and-up
-        i(data-activates="slide-out-user").waves-effect.waves-green.slide-out-user-button.small.material-icons.black-text more_vert
+    nav.white
+      ul.right  
+        li.notification-icon
+          a(href="", data-activates="notifications-dropdown").black-text.noti-dropdown-button
+            i.small.material-icons notifications 
+        li.hide-on-small-only
+          img(src="images/avatars/boy.png", alt="profile avatar", height="58").left.hide-on-med-and-down.user-avatar
+          a(href="#", data-activates="user-dropdown").black-text.waves-effect.waves-green.dropdown-button MR.OUTBOUND KASETSART
+            i.small.material-icons.right.arrow-dropdown arrow_drop_down
+        li.hide-on-med-and-up
+          i(data-activates="slide-out-user").waves-effect.waves-green.slide-out-user-button.small.material-icons.black-text more_vert
 
-    div(ng-controller="SidebarCtrl").side-nav#slide-out
-      .grid-menu-item(ng-class="{ active: isActive('/dashboard')}")
-        a(href="#/dashboard").dashboard
-          span Dashboard
-      .grid-menu-item(ng-class="{ active: isActive('/profile')}")
-        a(href="#/profile/username").profile
-          span Profile
-      .grid-menu-item(ng-class="{ active: isActive('/subjects')}")
-        a(href="#/subjects").subjects
-          span Subjects
-      .grid-menu-item(ng-class="{ active: isActive('/exams')}")
-        a(href="#/exams").exams
-          span Exams
-      .grid-menu-item(ng-class="{ active: isActive('/cards')}")
-        a(href="#/cards").cards
-          span Cards
-      .grid-menu-item(ng-class="{ active: isActive('/manageclass')}")
-        a(href="#/manageclass").manageclass
-          span Manage Class
-      .grid-menu-item(ng-class="{ active: isActive('/classreport')}")
-        a(href="#/classreport").classreport
-          span Class Report
-      .grid-menu-item(ng-class="{ active: isActive('/studentactivity')}")
-        a(href="#/studentactivity").studentactivity
-          span Student Activity
-      .grid-menu-item(ng-class="{ active: isActive('/studentprogress')}")
-        a(href="#/studentprogress").studentprogress
-          span Student Progress
-
-
-    a(href="", data-activates="slide-out",style="margin-left: 0.5em").button-collapse.show-on-large.hide-on-small-only
-      i.material-icons.black-text apps
-
-    a(href="" data-target="mobile-menu",style="margin-left: 0.5em").modal-trigger.hide-on-med-and-up
-      i.small.material-icons.black-text apps
-
-  div.row.view-container      
-    div(ng-view)
-  
-  footer.row.footer-copyright.grey.lighten-2
-      div.text-left.col.m12.grey-text.text-darken-2.center-align
-        p outbound &copy 2015
+      div(ng-controller="SidebarCtrl").side-nav#slide-out
+        .grid-menu-item(ng-class="{ active: isActive('/dashboard')}")
+          a(href="#/dashboard").dashboard
+            span Dashboard
+        .grid-menu-item(ng-class="{ active: isActive('/profile')}")
+          a(href="#/profile/username").profile
+            span Profile
+        .grid-menu-item(ng-class="{ active: isActive('/subjects')}")
+          a(href="#/subjects").subjects
+            span Subjects
+        .grid-menu-item(ng-class="{ active: isActive('/exams')}")
+          a(href="#/exams").exams
+            span Exams
+        .grid-menu-item(ng-class="{ active: isActive('/cards')}")
+          a(href="#/cards").cards
+            span Cards
+        .grid-menu-item(ng-class="{ active: isActive('/manageclass')}")
+          a(href="#/manageclass").manageclass
+            span Manage Class
+        .grid-menu-item(ng-class="{ active: isActive('/classreport')}")
+          a(href="#/classreport").classreport
+            span Class Report
+        .grid-menu-item(ng-class="{ active: isActive('/studentactivity')}")
+          a(href="#/studentactivity").studentactivity
+            span Student Activity
+        .grid-menu-item(ng-class="{ active: isActive('/studentprogress')}")
+          a(href="#/studentprogress").studentprogress
+            span Student Progress
 
 
+      a(href="", data-activates="slide-out",style="margin-left: 0.5em").button-collapse.show-on-large.hide-on-small-only
+        i.material-icons.black-text apps
+
+      a(href="" data-target="mobile-menu",style="margin-left: 0.5em").modal-trigger.hide-on-med-and-up
+        i.small.material-icons.black-text apps
+
+    div.row.view-container      
+      div(ng-view)
+    
+    footer.row.footer-copyright.grey.lighten-2
+        div.text-left.col.m12.grey-text.text-darken-2.center-align
+          p outbound &copy 2015
 
 
-  // build:js scripts/vendor.js
-  // bower:js
-  script(src='bower_components/jquery/dist/jquery.js')
-  script(src='bower_components/es5-shim/es5-shim.js')
-  script(src='bower_components/angular/angular.js')
-  script(src='bower_components/json3/lib/json3.min.js')
-  script(src='bower_components/angular-resource/angular-resource.js')
-  script(src='bower_components/angular-cookies/angular-cookies.js')
-  script(src='bower_components/angular-sanitize/angular-sanitize.js')
-  script(src='bower_components/angular-route/angular-route.js')
-  script(src='bower_components/materialize/bin/materialize.js')
-  script(src='bower_components/angular-materialize/src/angular-materialize.js')
-  script(src='bower_components/ng-simplePagination/simplePagination.js')
-  // endbower
-  // endbuild
 
-  script(src="scripts/flipclock/flipclock.min.js")
 
-  // build:js(.tmp) scripts/main.js
-  script(src="scripts/app.js")
-  script(src="scripts/controllers/main.js")
-  script(src="scripts/controllers/sidebar.js")
-  script(src="scripts/controllers/dashboard.js")
-  script(src="scripts/controllers/profile.js")
-  script(src="scripts/controllers/classroom.js")
-  script(src="scripts/controllers/cards.js")
-  script(src="scripts/controllers/exams.js")
-  script(src="scripts/controllers/takeexam.js")
-  script(src="scripts/controllers/manageclass.js")
-  script(src="scripts/controllers/classreport.js")
-  script(src="scripts/controllers/studentactivity.js")
-  script(src="scripts/controllers/studentprogress.js")
-  script(src="scripts/controllers/signin.js")
-  script(src="scripts/controllers/signup.js")
-  script(src="scripts/controllers/subjects.js")
-  script(src="scripts/controllers/notifications.js")
-  script(src="scripts/controllers/search.js")
-  script(src="scripts/controllers/settings.js")
-  script(src="scripts/controllers/enrollclassroom.js")
-  // endbuild
+    // build:js scripts/vendor.js
+    // bower:js
+    script(src='bower_components/jquery/dist/jquery.js')
+    script(src='bower_components/es5-shim/es5-shim.js')
+    script(src='bower_components/angular/angular.js')
+    script(src='bower_components/json3/lib/json3.min.js')
+    script(src='bower_components/angular-resource/angular-resource.js')
+    script(src='bower_components/angular-cookies/angular-cookies.js')
+    script(src='bower_components/angular-sanitize/angular-sanitize.js')
+    script(src='bower_components/angular-route/angular-route.js')
+    script(src='bower_components/materialize/bin/materialize.js')
+    script(src='bower_components/angular-materialize/src/angular-materialize.js')
+    script(src='bower_components/ng-simplePagination/simplePagination.js')
+    // endbower
+    // endbuild
 
-  
-  script.
-    $(document).ready(function(){
-      $('.modal-trigger').leanModal();
-      $(".button-collapse").sideNav({closeOnClick: true, menuWidth: 330});
-      $(".slide-out-user-button").sideNav({closeOnClick: true, menuWidth: 300, edge: 'right'});
-      $(".dropdown-button").dropdown({hover: false,belowOrigin: true});
-      $(".mini-dropdown-button").dropdown({hover: false,belowOrigin: true,constrain_width: false});
-      $(".noti-dropdown-button").dropdown({hover: true,belowOrigin: true});
-    })
+    script(src="scripts/flipclock/flipclock.min.js")
+
+    // build:js(.tmp) scripts/main.js
+    script(src="scripts/app.js")
+    script(src="scripts/controllers/main.js")
+    script(src="scripts/controllers/sidebar.js")
+    script(src="scripts/controllers/dashboard.js")
+    script(src="scripts/controllers/profile.js")
+    script(src="scripts/controllers/classroom.js")
+    script(src="scripts/controllers/cards.js")
+    script(src="scripts/controllers/exams.js")
+    script(src="scripts/controllers/takeexam.js")
+    script(src="scripts/controllers/manageclass.js")
+    script(src="scripts/controllers/classreport.js")
+    script(src="scripts/controllers/studentactivity.js")
+    script(src="scripts/controllers/studentprogress.js")
+    script(src="scripts/controllers/signin.js")
+    script(src="scripts/controllers/signup.js")
+    script(src="scripts/controllers/subjects.js")
+    script(src="scripts/controllers/notifications.js")
+    script(src="scripts/controllers/search.js")
+    script(src="scripts/controllers/settings.js")
+    script(src="scripts/controllers/enrollclassroom.js")
+    // endbuild
+
+    
+    script.
+      $(document).ready(function(){
+        $('.modal-trigger').leanModal();
+        $(".button-collapse").sideNav({closeOnClick: true, menuWidth: 330});
+        $(".slide-out-user-button").sideNav({closeOnClick: true, menuWidth: 300, edge: 'right'});
+        $(".dropdown-button").dropdown({hover: false,belowOrigin: true});
+        $(".mini-dropdown-button").dropdown({hover: false,belowOrigin: true,constrain_width: false});
+        $(".noti-dropdown-button").dropdown({hover: true,belowOrigin: true});
+      })
