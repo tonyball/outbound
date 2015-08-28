@@ -1,1 +1,173 @@
-p This is the studentprogress view.
+h3.grey-text.text-accent-2.center STUDENT PROGRESS
+
+.col.s12.m4
+	label Classroom
+	select.browser-default
+		option(value="XZM4562" selected) Calculus I
+		option(value="XZM4563") Calculus II
+.row
+//- selection student list
+.col.s12
+	label Select Student
+	select.browser-default.hide-on-med-and-up.select-student
+		option(value="username1" selected) name lastname
+		option(value="username2") name lastname
+		option(value="username3") name lastname
+//- end selection student list
+
+//- student list card
+.row
+	.col.m4.hide-on-small-only
+		.card.animated.slideInLeft
+			.card-content
+				span.card-title.black-text Calculus I
+					small.right XZM4562				
+				table.tableForStdDetail.bordered
+					thead
+						tr.green.darken-2.white-text
+							th(data-field="std_username") Username
+							th(data-field="std_fullname") Fullname
+							th(data-field="std_obcoins").right-align OB Coins
+					tbody
+						tr.stdname(data-username="username1")
+							td Username
+							td Name Lastname
+							td.right-align 0
+						tr.stdname(data-username="username2")
+							td Username
+							td Name Lastname
+							td.right-align 0
+						tr.stdname(data-username="username3")
+							td Username
+							td Name Lastname
+							td.right-align 0
+			.card-action
+				.input-field
+					i.material-icons.prefix search
+					input#seach-box(type="text",ng-model="search")
+					label(for="seach-box") Search
+	//- end student list
+
+
+
+	//- student details card
+	.col.s12.m8
+		.card.stdDetailCard.animated.rollIn#username1
+			.card-content
+				span.card-title.green-text.text-darken-2 Name Lastname
+					small.right 
+						em @username1
+				center
+					.subject-filter-btn-container
+						.btn-flat.hoverable.recent-activity-btn.active(data-value="recent-activity") 
+							img(src="images/icons/Survey.png")
+							p Recent Activity
+						.btn-flat.learning-progress-btn.hoverable(data-value="learning-progress") 
+							img(src="images/icons/GraduationCap.png")
+							p Learning Progress
+						.btn-flat.cards-summary-btn.hoverable(data-value="cards-summary") 
+							img(src="images/icons/Cards.png")
+							p Cards
+			.card-action
+				.content.recent-activity.animated.fadeIn
+					p.grey-text Date/time
+						a(href="").black-text  details go here
+						em  (0 minutes)
+					.divider
+
+				.content.learning-progress.animated.fadeIn
+					label Month
+					select.browser-default
+						option(value="8") August
+					//- a chart goes here
+
+				.content.cards-summary.animated.fadeIn
+					img(src="images/cards/1.png", width="125", data-position="top", data-delay="50", data-tooltip="Name").tooltipped
+					img(src="images/cards/1.png", width="125", data-position="top", data-delay="50", data-tooltip="Name").tooltipped
+					img(src="images/cards/1.png", width="125", data-position="top", data-delay="50", data-tooltip="Name").tooltipped
+					img(src="images/cards/1.png", width="125", data-position="top", data-delay="50", data-tooltip="Name").tooltipped
+					img(src="images/cards/1.png", width="125", data-position="top", data-delay="50", data-tooltip="Name").tooltipped
+					img(src="images/cards/1.png", width="125", data-position="top", data-delay="50", data-tooltip="Name").tooltipped
+					img(src="images/cards/1.png", width="125", data-position="top", data-delay="50", data-tooltip="Name").tooltipped
+
+	.col.s12.m8
+		.card.stdDetailCard.animated.rollIn#username2
+			.card-content
+				span.card-title.green-text.text-darken-2 Name Lastname
+					small.right 
+						em @username2
+				center
+					.subject-filter-btn-container
+						.btn-flat.hoverable.recent-activity-btn.active(data-value="recent-activity") 
+							img(src="images/icons/Survey.png")
+							p Recent Activity
+						.btn-flat.learning-progress-btn.hoverable(data-value="learning-progress") 
+							img(src="images/icons/GraduationCap.png")
+							p Learning Progress
+						.btn-flat.cards-summary-btn.hoverable(data-value="cards-summary") 
+							img(src="images/icons/Cards.png")
+							p Cards
+			.card-action
+				.content.recent-activity.animated.fadeIn
+					p.grey-text Date/time
+						a(href="").black-text  details go here
+						em  (0 minutes)
+					.divider
+
+				.content.learning-progress.animated.fadeIn
+					label Month
+					select.browser-default
+						option(value="8") August
+					//- a chart goes here
+
+				.content.cards-summary.animated.fadeIn
+					img(src="images/cards/1.png", width="125", data-position="top", data-delay="50", data-tooltip="Name").tooltipped
+					img(src="images/cards/1.png", width="125", data-position="top", data-delay="50", data-tooltip="Name").tooltipped
+					img(src="images/cards/1.png", width="125", data-position="top", data-delay="50", data-tooltip="Name").tooltipped
+					img(src="images/cards/1.png", width="125", data-position="top", data-delay="50", data-tooltip="Name").tooltipped
+					img(src="images/cards/1.png", width="125", data-position="top", data-delay="50", data-tooltip="Name").tooltipped
+					img(src="images/cards/1.png", width="125", data-position="top", data-delay="50", data-tooltip="Name").tooltipped
+					img(src="images/cards/1.png", width="125", data-position="top", data-delay="50", data-tooltip="Name").tooltipped
+	//- end student details
+
+script.
+	$(document).ready(function(){
+		$('.tooltipped').tooltip({delay:50});
+
+		$('.stdname').first().addClass('selected');
+		$('.stdDetailCard').hide();
+		$('.stdDetailCard').first().show();
+		
+		$('.content').hide();
+		$('.recent-activity').show();
+		
+
+		$('.stdname').on('click',function(){
+			$('.stdname').removeClass('selected');
+			$(this).addClass('selected');
+
+			switchStudent('#'+$(this).attr('data-username'));
+		});
+		$('.select-student').on('change', function(){
+			switchStudent('#'+$(this).val());
+		});
+
+		$('.btn-flat').on('click',function(){
+			$('.btn-flat').removeClass('active');
+			$(this).addClass('active');
+
+			filterContent('.'+$(this).attr('data-value'));
+		});	
+
+		var filterContent = function(subject){
+			$('.content').hide();
+			$(subject).show();
+		}
+
+		var switchStudent = function(student){
+			$('.stdDetailCard, .content').hide();
+			$(student+',.recent-activity').show();
+			$('.btn-flat').removeClass('active');
+			$('.recent-activity-btn').addClass('active');
+		}
+	})

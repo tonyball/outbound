@@ -7,3 +7,4 @@ angular.module('outboundApp')
       'AngularJS'
       'Karma'
     ]
+    $scope.datetime = new Date()

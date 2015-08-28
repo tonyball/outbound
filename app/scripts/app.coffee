@@ -54,13 +54,13 @@ angular
       .when '/subjects',
         templateUrl: 'views/subjects.html'
         controller: 'SubjectsCtrl'
-      .when '/notifications/:userid',
+      .when '/notifications',
         templateUrl: 'views/notifications.html'
         controller: 'NotificationsCtrl'
       .when '/search',
         templateUrl: 'views/search.html'
         controller: 'SearchCtrl'
-      .when '/settings/:userid',
+      .when '/settings/',
         templateUrl: 'views/settings.html'
         controller: 'SettingsCtrl'
       .otherwise
