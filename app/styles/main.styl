@@ -80,12 +80,25 @@ ul.notifications
 			
 .notify-item 
 	min-height 50px
-	max-height 75px
 	min-width 250px !important
 	max-width 550px !important
 	font-size 0.785em !important
 	overflow auto
 	border-bottom 1px solid lightgray
+	
+.notify-item-list
+	padding-top 14px
+	padding-left 10px
+	max-height 70px
+	min-height 70px
+	cursor pointer
+	border-bottom 1px solid lightgray
+
+.notify-item-list:hover
+	a 
+		color green !important
+		font-weight bolder !important
+	background-color #f1f1f1
 
 .notify-logo 
 	width 10% !important
@@ -202,6 +215,10 @@ div.notifications-header
 	cursor pointer
 	padding-top 5px
 	border-radius 10px
+	img
+		vertical-align sub
+	span
+		vertical-align super
 .summary-cards-container:hover
 	background-color rgba(255,255,255,0.5)
 	
