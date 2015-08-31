@@ -1,1 +1,20 @@
-p This is the signin view.
+h3.grey-text.text-accent-2.center SIGN IN
+
+
+.col.s12.m10.offset-m1.l6.offset-l3
+	.card.animated.bounceInDown
+		.card-content
+			form
+				.input-field
+					i.material-icons.prefix account_circle
+					input(id="username" type="text" ng-model="username" required).validate
+					label(for="username" data-error="invalid username" data-success="okay") Username
+				.input-field
+					i.material-icons.prefix vpn_key
+					input(id="password" type="password" ng-model="password" required).validate
+					label(for="password") Password
+				br
+				center
+					button(type="submit").btn.waves-effect.waves-light.green
+						i.material-icons.left send
+						| Sign in			
