@@ -51,7 +51,7 @@
 							|  Test
 						.collapsible-body
 							ul.collection
-								a(data-title="Limit and Function",data-href="XZM4562.pdf",data-type="test").content-link.black-text.collection-item.waves-effect.waves-green
+								a(data-title="Calculus I Test",data-href="XZM4562.pdf",data-type="test").content-link.black-text.collection-item.waves-effect.waves-green
 									i.material-icons.left.red-text insert_drive_file
 									| Calculus I
 									.secondary-content
@@ -66,7 +66,7 @@
 			.card-content
 				span.card-title.black-text.content-title Limit and Function
 				.video-container.content-container
-					video#video-item(src="videos/dlit_maths_set/01.mp4",controls, width="100%", type="video/*")
+					video#video-item(src="videos/XZM4562/01.mp4",controls, width="100%", type="video/*")
 				.practice-container.content-container
 					img#practice-item(src="images/avatars/boy-lg.png", width="100%")
 					.answer-container
@@ -104,32 +104,3 @@ script.
 		var vid = document.getElementById('video-item');
 		vid.playbackRate = speed;
 	}
-
-	$(document).ready(function(){
-		$('.collapsible').collapsible({ accordion : false });
-		$('.test-container-action, .practice-container, .test-container').hide();
-		$('.content-link').first().addClass('active');
-		$('.content-title').text($('.content-link').first().attr('data-title'));
-
-		$('.content-link').on('click', function(){
-			$('.content-link').removeClass('active');
-			$(this).addClass('active');
-
-			switchContent('.'+$(this).attr('data-type')+'-container',$(this).attr('data-type'), $(this).attr('data-href'), $(this).attr('data-title'));
-		});
-
-		var switchContent = function(content, type, url, title){
-			$('.content-container, .action-container').hide();
-			$(content+','+content+'-action').show();
-
-			$('.content-title').text(title);
-
-			if (type == 'video') {
-				$('#video-item').attr('src', 'videos/'+url);
-			} else if (type == 'practice') {
-				$('#practice-item').attr('src', 'images/'+url);
-			} else {
-				$('#test-item').attr('data', 'pdf/'+url);
-			}
-		}
-	})

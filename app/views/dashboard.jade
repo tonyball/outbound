@@ -1,8 +1,8 @@
 h3.grey-text.text-accent-2.center DASHBOARD
 //- filter button
 .center-align
-	a.waves-effect.waves-light.btn.green.learn-btn Learning
-	a(style="margin-left:10px").waves-effect.waves-light.btn-flat.teach-btn Teaching
+	a(ng-click="switchRole()").waves-effect.waves-light.btn.green.learn-btn Learning
+	a(ng-click="switchRole()",style="margin-left:10px").waves-effect.waves-light.btn-flat.teach-btn Teaching
 //- end fitler button
 
 
@@ -151,16 +151,3 @@ h3.grey-text.text-accent-2.center DASHBOARD
 			a.btn-floating.red.darken-2.tooltipped(data-position="left" data-delay="50" data-tooltip="Create a Classroom")
 				i.material-icons create
 //- end actions button
-
-script.
-	$(document).ready(function(){
-		$('.modal-trigger').leanModal();
-		$('.teaching').hide();
-		$('.tooltipped').tooltip({delay: 50});
-		$('.learn-btn,.teach-btn').on('click', function(){
-			$('.teach-btn').toggleClass('btn green btn-flat');
-			$('.learn-btn').toggleClass('btn green btn-flat');
-			$('.learning').toggle().toggleClass('bounceInDown bounceOutUp');
-			$('.teaching').toggle().toggleClass('bounceInDown bounceOutUp');
-		});
-	});

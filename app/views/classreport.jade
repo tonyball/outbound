@@ -13,7 +13,7 @@ h3.grey-text.text-accent-2.center CLASSROOM REPORT
 
 .row.chart-report.report
 	.col.s12
-		.card.animated.fadeInDown
+		.card.animated.fadeIn
 			.card-content
 				span.card-title.black-text Calculus I
 				b.right 15 Students
@@ -42,7 +42,7 @@ h3.grey-text.text-accent-2.center CLASSROOM REPORT
 
 .row.cards-report.report
 	.col.s12
-		.card.animated.fadeInDown
+		.card.animated.fadeIn
 			.card-content
 				span.card-title.black-text Calculus I
 				b.right 15 Students
@@ -85,14 +85,3 @@ h3.grey-text.text-accent-2.center CLASSROOM REPORT
 										img(ng-src="images/cards/1.png",data-position="top",data-delay="50",data-tooltip="description...").user-badges.tooltipped
 			.card-action
 				b.right Classroom Code: XZM4562
-
-script.
-	$(document).ready(function(){
-		$('select').material_select();
-		$('.tooltipped').tooltip({delay: 50});
-		$('.cards-report').hide();
-		$('.report-type').on('change',function(){
-			$('.report').hide();
-			$('.'+$(this).val()).show();
-		});
-	})

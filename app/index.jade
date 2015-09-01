@@ -188,15 +188,15 @@ html(ng-controller="DashboardCtrl")
     script(src="scripts/controllers/search.js")
     script(src="scripts/controllers/settings.js")
     script(src="scripts/controllers/enrollclassroom.js")
+    script(src="scripts/controllers/index.js")
     // endbuild
 
-    
-    script.
-      $(document).ready(function(){
+  script.
+    $(document).ready(function(){
         $('.modal-trigger').leanModal();
         $(".button-collapse").sideNav({closeOnClick: true, menuWidth: 330});
         $(".slide-out-user-button").sideNav({closeOnClick: true, menuWidth: 300, edge: 'right'});
         $(".dropdown-button").dropdown({hover: false,belowOrigin: true});
         $(".mini-dropdown-button").dropdown({hover: false,belowOrigin: true,constrain_width: false});
         $(".noti-dropdown-button").dropdown({hover: true,belowOrigin: true});
-      })
+    })
