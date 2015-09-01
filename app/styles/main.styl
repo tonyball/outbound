@@ -80,12 +80,25 @@ ul.notifications
 			
 .notify-item 
 	min-height 50px
-	max-height 75px
 	min-width 250px !important
 	max-width 550px !important
 	font-size 0.785em !important
 	overflow auto
 	border-bottom 1px solid lightgray
+	
+.notify-item-list
+	padding-top 14px
+	padding-left 10px
+	max-height 70px
+	min-height 70px
+	cursor pointer
+	border-bottom 1px solid lightgray
+
+.notify-item-list:hover
+	a 
+		color green !important
+		font-weight bolder !important
+	background-color #f1f1f1
 
 .notify-logo 
 	width 10% !important
@@ -202,17 +215,21 @@ div.notifications-header
 	cursor pointer
 	padding-top 5px
 	border-radius 10px
+	img
+		vertical-align sub
+	span
+		vertical-align super
 .summary-cards-container:hover
 	background-color rgba(255,255,255,0.5)
 	
 .input-field 
-	label
-		left 0 !important
-	input[type=text]:focus, input[type=password]:focus
+	// label
+	// 	left 0 !important
+	input[type=text]:focus, input[type=password]:focus,textarea:focus,input[type=email]:focus,input[type=tel]:focus
 		border-bottom 1px solid green !important
 		color #000 !important
 		box-shadow 0 1px 0 0 green !important
-	input[type=text]:focus + label , input[type=password]:focus + label
+	input[type=text]:focus + label , input[type=password]:focus + label,textarea:focus + label,input[type=email]:focus + label,input[type=tel]:focus + label
 		color green !important
 	input[type=text].valid, input[type=password].valid
 		color green !important
@@ -224,11 +241,11 @@ div.notifications-header
 a.collection-item:hover
 	background-color #adff7f !important
 
-.btn-flat:hover
-	background-color #2ebb60
+// .btn-flat:hover
+// 	background-color #2ebb60
 
-.btn-flat
-	border 1px solid green
+// .btn-flat
+// 	border 1px solid green
 
 th
 	cursor pointer
@@ -358,3 +375,7 @@ select
 	font-size 0.75em
 	text-align center
 	display inline-block
+
+.connect-text
+	font-size 2em
+	font-weight 200
