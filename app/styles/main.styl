@@ -223,13 +223,13 @@ div.notifications-header
 	background-color rgba(255,255,255,0.5)
 	
 .input-field 
-	label
-		left 0 !important
-	input[type=text]:focus, input[type=password]:focus
+	// label
+	// 	left 0 !important
+	input[type=text]:focus, input[type=password]:focus,textarea:focus,input[type=email]:focus,input[type=tel]:focus
 		border-bottom 1px solid green !important
 		color #000 !important
 		box-shadow 0 1px 0 0 green !important
-	input[type=text]:focus + label , input[type=password]:focus + label
+	input[type=text]:focus + label , input[type=password]:focus + label,textarea:focus + label,input[type=email]:focus + label,input[type=tel]:focus + label
 		color green !important
 	input[type=text].valid, input[type=password].valid
 		color green !important
@@ -241,11 +241,11 @@ div.notifications-header
 a.collection-item:hover
 	background-color #adff7f !important
 
-.btn-flat:hover
-	background-color #2ebb60
+// .btn-flat:hover
+// 	background-color #2ebb60
 
-.btn-flat
-	border 1px solid green
+// .btn-flat
+// 	border 1px solid green
 
 th
 	cursor pointer
@@ -375,3 +375,7 @@ select
 	font-size 0.75em
 	text-align center
 	display inline-block
+
+.connect-text
+	font-size 2em
+	font-weight 200

@@ -1,1 +1,101 @@
-p This is the settings view.
+h3.grey-text.text-accent-2.center SETTINGS @username
+
+.row
+	.col.s12.m8.offset-m2
+		.white.z-depth-1.animated.fadeIn(style="padding: 15px")
+			h5 Basics
+			.input-field.col.s6
+				input(type="text" id="firstname" required)
+				label(for="firstname") First Name
+			.input-field.col.s6
+				input(type="text" id="lastname" required)
+				label(for="lastname") Last Name
+			.input-field.col.s6
+				select
+					option(value="Male") Male
+					option(value="Female") Female
+					option(value="Other") Other
+				label Gender
+			.input-field.col.s6
+				select
+					option(value="Elementary School") Elementary School
+					option(value="Middle School") Middle School
+					option(value="High School") High School
+					option(value="Bachelor Degree") Bachelor Degree
+					option(value="Masters Degree") Master's Degree
+					option(value="Doctoral Degree") Doctoral Degree
+				label Education Level
+			.input-field.col.s12
+				input(type="date" id="birthdate" required).datepicker
+				label(for="birthdate") Birthdate
+			.input-field.col.s12
+				input(type="tel" id="mobile" required pattern="^[0-9]*$").validate
+				label(for="mobile" data-error="only numbers") Tel.
+			center
+				button(onclick="Materialize.toast('<span class=green-text lighten-text-2>Information have been saved</span>', 2000)").btn.green.waves-effect.waves-light Save changes
+				.row
+			.divider
+			
+			h5 Password
+			.input-field.col.s6.offset-s3
+				input(type="password" id="currentpassword" required)
+				label(for="currentpassword") Current Password
+			.input-field.col.s6.offset-s3
+				input(type="password" id="newpassword" required)
+				label(for="newpassword") New Password
+			.input-field.col.s6.offset-s3
+				input(type="password" id="confirmpassword" required)
+				label(for="confirmpassword") Confirm Password
+
+			center
+				button.btn.orange.waves-effect.waves-light Change password
+				.row
+			.divider
+			
+			h5 Linked Accounts
+			img(src="images/icons/GooglePlus.png").left 
+			span.connect-text Google 
+			button.btn.grey.waves-light.waves-effect.right Connect
+			.row
+			img(src="images/icons/Facebook.png").left
+			span.connect-text Facebook 
+			button.btn.grey.waves-light.waves-effect.right Connect
+			.row
+			img(src="images/icons/Email.png").left
+			span.connect-text E-Mail 
+			button.btn.grey.waves-light.waves-effect.right Connect
+			.row
+			.divider
+			
+			h5 Public Profile Information
+			.input-field.col.s12
+				i.material-icons.prefix location_on
+				input(type="text" id="location")
+				label(for="location") Location
+			.input-field.col.s12
+				i.material-icons.prefix school
+				input(type="text" id="school")
+				label(for="school") Current school
+			.input-field.col.s12
+				i.material-icons.prefix mode_edit
+				textarea(type="text" id="bio", maxlength="160", placeholer="Tell about your self in 160 characters or less...", length="160").materialize-textarea
+				label(for="bio") Bio
+
+			center
+				button.btn.green.waves-effect.waves-light Save
+				.row
+			.divider
+			
+			h5 Delete Account
+			center
+				button.btn.red.waves-effect.waves-light Delete your account
+
+script.
+	$(document).ready(function(){
+		$('.datepicker').pickadate({
+			selectMonths: true,
+			selectYears: 30
+		});
+		$('select').material_select();
+		$('textarea#bio').characterCounter();
+	})

@@ -1,1 +1,42 @@
-p This is the signup view.
+h3.grey-text.text-accent-2.center SIGN UP
+
+.col.s12.m10.l8.offset-m1.offset-l2
+	.white.animated.fadeIn.z-depth-1(style="padding: 15px")
+		form
+			.input-field.col.s6
+				i.material-icons.prefix account_box
+				input(type="text" id="firstname" required).validate
+				label(for="firstname") First Name
+			.input-field.col.s6
+				input(type="text" id="lastname" required).validate
+				label(for="lastname") Last Name
+			.input-field.col.s12
+				i.material-icons.prefix account_circle
+				input(type="text" id="username" required maxlength="16" ).validate
+				label(for="username" data-error="wrong" data-success="okay") Username
+			.input-field.col.s6
+				i.material-icons.prefix vpn_key
+				input(type="password" id="password" required maxlength="24")
+				label(for="password") Password
+			.input-field.col.s6
+				i.material-icons.prefix vpn_key
+				input(type="password" id="confirmpassword" required maxlength="24")
+				label(for="confirmpassword") Password
+			.input-field.col.s12
+				i.material-icons.prefix email
+				input(type="email" id="email" required ).validate
+				label(for="email" data-error="wrong" data-success="okay") E-Mail
+			.input-field.col.s12
+				i.material-icons.prefix cake
+				input(type="date" id="birthdate" required).datepicker
+				label(for="birthdate") birthdate
+			center
+				button(type="submit").btn.green.waves-effect.waves-light Sign up
+
+script.
+	$(document).ready(function(){
+		$('.datepicker').pickadate({
+			selectMonths: true,
+			selectYears: 30
+		});
+	})
