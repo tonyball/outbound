@@ -73,22 +73,3 @@ center.hide-on-small-only
 						| Take the Exam
 					em.hide-on-med-and-up.red-text your device is not suitable for taking the exam
 //- end exam list card
-
-script.
-	$(document).ready(function(){
-		$('.btn-flat').on('click',function(){
-			$('.btn-flat').removeClass('active');
-			$(this).addClass('active');
-
-			filterSubject('.'+$(this).attr('data-value'));
-		});
-		$('select').on('change',function(){
-			filterSubject('.'+$(this).val());
-		});
-
-		var filterSubject = function(subject){
-			$('.exam-card').hide();
-			$(subject).show();
-		}
-		$('.collapsible').collapsible({accordion : false });
-	})

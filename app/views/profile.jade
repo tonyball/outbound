@@ -46,7 +46,7 @@ h3.grey-text.text-accent-2.center PROFILE
 .row
 	.col.s12.m10.l10.offset-m1.offset-l1
 		//- card-collection
-		.card.data-card.card-collection.animated.fadeInDown
+		.card.data-card.card-collection.animated.fadeIn
 			.card-content.green
 				img(src="images/icons/StackPhotos.png").left
 				span.card-title.white-text Card Collection
@@ -107,28 +107,3 @@ h3.grey-text.text-accent-2.center PROFILE
 		a(href="",style="margin-right: 10px").modal-action.modal-close.btn.green.waves-effect.waves-light Save
 		
 //- end modal
-
-script.
-	$(document).ready(function(){
-		$('.card-summary,.recent-activity,.learning-progress').hide();
-		$('.tooltipped').tooltip({delay: 1});
-		$('.modal-trigger').leanModal();
-		$('.action-btn').on('click',function(){
-			$('.action-btn').addClass('black-text btn-flat');
-			$('.action-btn').removeClass('white-text btn green');
-			$(this).removeClass('black-text btn-flat');
-			$(this).addClass('white-text btn green');
-
-			switchCard('.'+$(this).attr('data-value'));
-		});
-		$('select').on('change',function(){
-			switchCard('.'+$(this).val());
-		});
-
-		var switchCard = function(card){
-			$('.data-card').removeClass('fadeIn');
-			$('.data-card').addClass('fadeOut').hide();
-			$(card).removeClass('fadeOut');
-			$(card).addClass('fadeIn').show();
-		}
-	})

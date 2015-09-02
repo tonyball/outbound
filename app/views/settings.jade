@@ -89,13 +89,9 @@ h3.grey-text.text-accent-2.center SETTINGS @username
 			h5 Delete Account
 			center
 				button.btn.red.waves-effect.waves-light Delete your account
-
 script.
 	$(document).ready(function(){
-		$('.datepicker').pickadate({
-			selectMonths: true,
-			selectYears: 30
-		});
+		$('.datepicker').pickadate({selectMonths: true,selectYears: 30});
 		$('select').material_select();
 		$('textarea#bio').characterCounter();
 	})
