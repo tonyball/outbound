@@ -28,7 +28,7 @@ center
 //- activity list card
 .row
 	.col.s12
-		.card.animated.bounceInDown
+		.card.animated.bounceInDown.classroom-content#XZM4562
 			.card-content
 				span.card-title.black-text Calculus I 	
 				ul.collapsible(data-collapsible="accordion")
@@ -76,21 +76,55 @@ center
 									b.black-text Started
 
 								.std-activity.col.s4.m4.l4.animated.fadeIn.green.darken-2
-									b.white-text Completed						
+									b.white-text Completed
+
+		.card.animated.bounceInDown.classroom-content#XZM4563
+			.card-content
+				span.card-title.black-text Calculus II 	
+				ul.collapsible(data-collapsible="accordion")
+					li.content.type-video
+						.collapsible-header
+							i.material-icons local_movies
+							| Video Title
+							i.material-icons.right arrow_drop_down
+						.collapsible-body
+							.row
+								.std-activity.col.s4.m4.l4.animated.fadeIn.grey.lighten-2
+									b.black-text Not Started
+
+								.std-activity.col.s4.m4.l4.animated.fadeIn.green.lighten-2
+									b.black-text Started
+
+								.std-activity.col.s4.m4.l4.animated.fadeIn.green.darken-2
+									b.white-text Completed
+					li.content.type-practice
+						.collapsible-header
+							i.material-icons border_color
+							| Practice Title
+							i.material-icons.right arrow_drop_down
+						.collapsible-body
+							.row
+								.std-activity.col.s4.m4.l4.animated.fadeIn.grey.lighten-2
+									b.black-text Not Started
+
+								.std-activity.col.s4.m4.l4.animated.fadeIn.green.lighten-2
+									b.black-text Started
+
+								.std-activity.col.s4.m4.l4.animated.fadeIn.green.darken-2
+									b.white-text Completed
+					li.content.type-test
+						.collapsible-header
+							i.material-icons insert_drive_file
+							| Test Title
+							i.material-icons.right arrow_drop_down
+						.collapsible-body
+							.row
+								.std-activity.col.s4.m4.l4.animated.fadeIn.grey.lighten-2
+									b.black-text Not Started
+
+								.std-activity.col.s4.m4.l4.animated.fadeIn.green.lighten-2
+									b.black-text Started
+
+								.std-activity.col.s4.m4.l4.animated.fadeIn.green.darken-2
+									b.white-text Completed							
 //- end activity list card
-
-script.
-	$(document).ready(function(){
-		$('.collapsible').collapsible({ accordion : false });
-		$('.btn-flat').on('click',function(){
-			$('.btn-flat').removeClass('active');
-			$(this).addClass('active');
-
-			filterContent('.'+$(this).attr('data-value'));
-		});
-
-		var filterContent = function(subject){
-			$('.content').hide();
-			$(subject).show();
-		}
-	})

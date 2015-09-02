@@ -2,8 +2,11 @@
 
 angular.module('outboundApp')
   .controller 'ManageclassCtrl', ($scope) ->
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate'
-      'AngularJS'
-      'Karma'
-    ]
+  	angular.element('.tooltipped').tooltip({delay: 50})
+  	angular.element('.classroom-content').hide()
+  	angular.element('#'+angular.element('select').val()).show()
+
+  	angular.element('select').on 'change', ->
+  		angular.element('.classroom-content').hide()
+  		angular.element('#' + angular.element(this).val()).show()
+  		return false
