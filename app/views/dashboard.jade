@@ -10,21 +10,21 @@ h3.grey-text.text-accent-2.center DASHBOARD
 
 //- dashboard contents
 .row
-	.col.s12.m6.l4
-		.card.learning.animated.bounceInDown
+	.col.s12.m6.l4.learning(ng-repeat="class in user_learning_classes")
+		.card.animated.bounceInDown
 			.card-image.waves-effect.waves-block.waves-dark
-				img(src="images/logo.png").activator.responsive-img
+				img(ng-src="images/classrooms/{{class.image}}").activator.responsive-img
 			.card-content
 				span.card-title.activator.black-text
 					i.material-icons.right more_vert
-					| Calculus I
+					| {{ class.title }}
 				br
 				em Classroom Code: 
-					b XZM4562
+					b {{ class.code }}
 
 				.row
 				center 
-					a.waves-effect.waves-green.btn.green.darken-1(href='#/classroom/XZM4562')
+					a.waves-effect.waves-green.btn.green.darken-1(href='#/classroom/{{class.code}}')
 						i.material-icons.left play_circle_outline
 						|  Resume
 					.row
@@ -34,74 +34,64 @@ h3.grey-text.text-accent-2.center DASHBOARD
 
 				.row
 				i.material-icons.left local_offer
-				a(href="#").green-text Maths &nbsp
-				a(href="#").green-text Calculus
+				a(ng-repeat="tag in class.tags" href="#/tags/{{tag}}" ).green-text {{tag}} &nbsp
 				
 				
 			.card-action
 				center
-					a(data-target="studentlist-modal").modal-trigger.waves-effect.waves-green.btn-flat.black-text.hoverable
+					a(data-target="studentlist-modal-{{class.code}}").modal-trigger.waves-effect.waves-green.btn-flat.black-text.z-depth-2
 						i.material-icons.left people
 						| Student List
 			.card-reveal
 				span.card-title.activator.black-text
-					| Calculus I
+					| {{ class.title }}
 					i.material-icons.right.red-text close
 				h6 Content List
 				ul.collection
-					li.collection-item A
-					li.collection-item B
-					li.collection-item C
-					li.collection-item D
-					li.collection-item E
+					li.collection-item(ng-repeat="content in class.topics") {{content}}
 				
 
 				.center
-					b.title MR.TEACHER OUTBOUND
+					b.title {{ class.teacher_name }}
 					br 
 					| INSTRUCTOR
 
-	.col.s12.m6.l4
-		.card.teaching.animated.bounceOutUp
+	.col.s12.m6.l4.teaching(ng-repeat="class in user_teaching_classes" style="display:none")
+		.card.animated.bounceInDown
 			.card-image.waves-effect.waves-block.waves-dark
-				img(src="images/logo.png").activator.responsive-img
+				img(ng-src="images/classrooms/{{class.image}}").activator.responsive-img
 			.card-content
 				span.card-title.activator.black-text
 					i.material-icons.right more_vert
-					| Calculus I
+					| {{ class.title }}
 				br
 				em Classroom Code: 
-					b XZM4562
+					b {{ class.code }}
 
 				.row
 				i.material-icons.left local_offer
-				a(href="#").green-text Maths &nbsp
-				a(href="#").green-text Calculus
-				
+				a(ng-repeat="tag in class.tags" href="#/tags/{{tag}}").green-text {{tag}} &nbsp				
 				
 			.card-action
 				center
-					a(data-target="studentlist-modal").modal-trigger.waves-effect.waves-green.btn-flat.black-text.hoverable
+					a(data-target="studentlist-modal-{{class.code}}").modal-trigger.waves-effect.waves-green.btn-flat.black-text.z-depth-1
 						i.material-icons.left people
 						| Student List
 			.card-reveal
 				span.card-title.activator.black-text
-					| Calculus I
+					| {{ class.title }}
 					i.material-icons.right.red-text close
 				h6 Content List
 				ul.collection
-					li.collection-item A
-					li.collection-item B
-					li.collection-item C
-					li.collection-item D
-					li.collection-item E
+					li.collection-item(ng-repeat="content in class.topics") {{content}}
+
 				ul.collection
-					a(href="#/manageclass/XZM4562").collection-item.green-text.text-darken-1.center-align.waves-effect.waves-green Manage Classroom
-					a(href="#/studentprogress/XZM4562").collection-item.green-text.text-darken-1.center-align.waves-effect.waves-green  Student Progress
-					a(href="#/studentactivity/XZM4562").collection-item.green-text.text-darken-1.center-align.waves-effect.waves-green  Student Activity
+					a(href="#/manageclass/{{class.code}}").collection-item.green-text.text-darken-1.center-align.waves-effect.waves-green Manage Classroom
+					a(href="#/studentprogress/{{class.code}}").collection-item.green-text.text-darken-1.center-align.waves-effect.waves-green  Student Progress
+					a(href="#/studentactivity/{{class.code}}").collection-item.green-text.text-darken-1.center-align.waves-effect.waves-green  Student Activity
 
 				.center
-					b.title MR.TEACHER OUTBOUND
+					b.title {{class.teacher_name}}
 					br 
 					| INSTRUCTOR	
 

@@ -4,11 +4,12 @@
 	"topics":["Limits and Derivatives","Differentiation Rules","Applications of Differentiation","Integrals"],
 	"code":"XTZ5218",
 	"duration": 0,
-	"image":"maths-logo.jpg",
+	"image":"XTZ5218.jpg",
 	"username":"itouchz",
 	"teacher_name":"Weeraphat S.",
 	"subject":"Math",
 	"degree":"Easy",
 	"section":[{}],
-	"tags":["Calculus", "Math"]
+	"tags":["Calculus", "Math"],
+	"students":[]
 }

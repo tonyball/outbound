@@ -1,0 +1,15 @@
+{
+	"id":"1",
+	"title":"Basic English I",
+	"topics":["Greetings","Date & Time","Family","Restaurants"],
+	"code":"XTZ3338",
+	"duration": 0,
+	"image":"XTZ3338.png",
+	"username":"itouchz",
+	"teacher_name":"Patarat T.",
+	"subject":"Art & Humanities",
+	"degree":"Easy",
+	"section":[{}],
+	"tags":["English", "Basic"],
+	"students":[]
+}
