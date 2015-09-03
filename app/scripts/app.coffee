@@ -63,5 +63,11 @@ angular
       .when '/settings/',
         templateUrl: 'views/settings.html'
         controller: 'SettingsCtrl'
+      .when '/help',
+        templateUrl: 'views/help.html'
+        controller: 'HelpCtrl'
+      .when '/tags',
+        templateUrl: 'views/tags.html'
+        controller: 'TagsCtrl'
       .otherwise
         redirectTo: '/'

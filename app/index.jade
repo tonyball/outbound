@@ -1,5 +1,5 @@
 doctype html
-html(ng-controller="DashboardCtrl")
+html(ng-app="outboundApp",ng-controller="DashboardCtrl")
   head
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
@@ -19,39 +19,39 @@ html(ng-controller="DashboardCtrl")
     link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
     link(rel="stylesheet", href="scripts/flipclock/flipclock.css")
 
-  body(ng-app="outboundApp")
-    
+  body
     //- dropdown content
     ul.dropdown-content#user-dropdown
       li
-        a(href="#/profile/username").black-text Profile
+        a(href="#/profile/{{user.username}}").black-text Profile
       li.divider
       li
         a(href="#/settings").black-text Account Settings
       li
-        a(href="#").black-text User Guide
+        a(href="#/help").black-text User Guide
       li.divider
       li
         a(href="#").black-text Sign out
 
     ul.side-nav#slide-out-user
       li
-        a(href="#/profile/username").black-text Profile
+        a(href="#/profile/{{user.username}}").black-text Profile
       li.divider
       li
         a(href="#/settings").black-text Account Settings
       li
-        a(href="#").black-text User Guide
+        a(href="#/help").black-text User Guide
       li.divider
       li
         a(href="#").black-text Sign out 
 
     ul.notifications.dropdown-content#notifications-dropdown
-      div.notifications-header
+      .notifications-header
         header.black-text Notifications
       li.divider
       li
         a.notify-item.black-text No Notifications
+
     //- end dropdown content
 
     //- bottom sheet menus
@@ -98,7 +98,7 @@ html(ng-controller="DashboardCtrl")
             i.small.material-icons notifications 
         li.hide-on-small-only
           img(src="images/avatars/boy.png", alt="profile avatar", height="58").left.hide-on-med-and-down.user-avatar
-          a(href="#", data-activates="user-dropdown").black-text.waves-effect.waves-green.dropdown-button MR.OUTBOUND KASETSART
+          a(href="#", data-activates="user-dropdown").black-text.waves-effect.waves-green.dropdown-button {{user.firstname+" "+user.lastname | uppercase}}
             i.small.material-icons.right.arrow-dropdown arrow_drop_down
         li.hide-on-med-and-up
           i(data-activates="slide-out-user").waves-effect.waves-green.slide-out-user-button.small.material-icons.black-text more_vert
@@ -108,7 +108,7 @@ html(ng-controller="DashboardCtrl")
           a(href="#/dashboard").dashboard
             span Dashboard
         .grid-menu-item(ng-class="{ active: isActive('/profile')}")
-          a(href="#/profile/username").profile
+          a(href="#/profile/{{user.username}}").profile
             span Profile
         .grid-menu-item(ng-class="{ active: isActive('/subjects')}")
           a(href="#/subjects").subjects
@@ -188,6 +188,8 @@ html(ng-controller="DashboardCtrl")
     script(src="scripts/controllers/search.js")
     script(src="scripts/controllers/settings.js")
     script(src="scripts/controllers/enrollclassroom.js")
+    script(src="scripts/controllers/help.js")
+    script(src="scripts/controllers/tags.js")
     // endbuild
 
   script.
